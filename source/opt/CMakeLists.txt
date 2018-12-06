@@ -23,6 +23,7 @@ set(SPIRV_TOOLS_OPT_SOURCES
   common_uniform_elim_pass.h
   compact_ids_pass.h
   composite.h
+  condition_dependencies.h
   const_folding_rules.h
   constants.h
   copy_prop_arrays.h
@@ -115,6 +116,7 @@ set(SPIRV_TOOLS_OPT_SOURCES
   common_uniform_elim_pass.cpp
   compact_ids_pass.cpp
   composite.cpp
+  condition_dependencies.cpp
   const_folding_rules.cpp
   constants.cpp
   copy_prop_arrays.cpp

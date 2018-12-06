@@ -24,6 +24,7 @@
 #include "source/opt/combine_access_chains.h"
 #include "source/opt/common_uniform_elim_pass.h"
 #include "source/opt/compact_ids_pass.h"
+#include "source/opt/condition_dependencies.h"
 #include "source/opt/copy_prop_arrays.h"
 #include "source/opt/dead_branch_elim_pass.h"
 #include "source/opt/dead_insert_elim_pass.h"

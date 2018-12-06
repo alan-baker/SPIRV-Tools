@@ -440,6 +440,8 @@ bool Optimizer::RegisterPassFromFlag(const std::string& flag) {
     RegisterSizePasses();
   } else if (pass_name == "legalize-hlsl") {
     RegisterLegalizationPasses();
+  } else if (pass_name == "condition-dependencies") {
+    RegisterPass(CreateConditionDependenciesPass());
   } else {
     Errorf(consumer(), nullptr, {},
            "Unknown flag '--%s'. Use --help for a list of valid flags",
@@ -779,6 +781,11 @@ Optimizer::PassToken CreateInstBindlessCheckPass(uint32_t desc_set,
                                                  uint32_t shader_id) {
   return MakeUnique<Optimizer::PassToken::Impl>(
       MakeUnique<opt::InstBindlessCheckPass>(desc_set, shader_id));
+}
+
+Optimizer::PassToken CreateConditionDependenciesPass() {
+  return MakeUnique<Optimizer::PassToken::Impl>(
+      MakeUnique<opt::ConditionDependencies>());
 }
 
 }  // namespace spvtools
