@@ -1,3 +1,16 @@
+// Copyright (c) 2018 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #include "source/opt/condition_dependencies.h"
 
@@ -9,6 +22,12 @@ namespace spvtools {
 namespace opt {
 
 Pass::Status ConditionDependencies::Process() {
+  for (auto& function : *get_module()) {
+    for (auto& block : function) {
+      uint32_t merge_id = block.MergeBlockIdIfAny();
+      if (merge_id) merge_to_header_[merge_id] = block.id();
+    }
+  }
   for (auto& function : *get_module()) {
     std::cout << "Function %" << function.result_id();
     for (auto& entry : get_module()->entry_points()) {
@@ -47,6 +66,12 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
       std::cout << ")";
       break;
     // Binary ops
+    case SpvOpIAdd:
+    case SpvOpFAdd:
+    case SpvOpISub:
+    case SpvOpFSub:
+    case SpvOpBitwiseAnd:
+    case SpvOpBitwiseOr:
     case SpvOpLogicalOr:
     case SpvOpLogicalAnd:
     case SpvOpIEqual:
@@ -65,9 +90,11 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
     case SpvOpFOrdGreaterThan:
     case SpvOpFOrdLessThanEqual:
     case SpvOpFOrdGreaterThanEqual:
+      std::cout << "(";
       PrintCondition(cond->GetSingleWordInOperand(0u));
       std::cout << " " << Operator(cond->opcode()) << " ";
       PrintCondition(cond->GetSingleWordInOperand(1u));
+      std::cout << ")";
       break;
     case SpvOpFUnordEqual:
     case SpvOpFUnordNotEqual:
@@ -91,6 +118,12 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
       }
       break;
     }
+    case SpvOpConstantTrue:
+      std::cout << "true";
+      break;
+    case SpvOpConstantFalse:
+      std::cout << "false";
+      break;
     case SpvOpLoad:
       std::cout << "*(";
       PrintCondition(cond->GetSingleWordInOperand(0u));
@@ -108,26 +141,66 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
     case SpvOpVariable:
       PrintVariable(cond);
       break;
+    case SpvOpPhi:
+      PrintPhi(cond);
+      break;
     default:
       std::cout << "<x>";
       break;
   }
 }
 
-void ConditionDependencies::PrintVariable(const Instruction* inst) {
+void ConditionDependencies::PrintVariable(Instruction* inst) {
   SpvStorageClass sc =
       static_cast<SpvStorageClass>(inst->GetSingleWordInOperand(0u));
   std::string storage_class(StorageClass(sc));
   uint32_t descriptor_set = 0;
   uint32_t binding = 0;
+  std::string builtin;
   for (auto dec : context()->get_decoration_mgr()->GetDecorationsFor(
            inst->result_id(), false)) {
     if (dec->GetSingleWordInOperand(1u) == SpvDecorationDescriptorSet)
       descriptor_set = dec->GetSingleWordInOperand(2u);
     if (dec->GetSingleWordInOperand(1u) == SpvDecorationBinding)
       binding = dec->GetSingleWordInOperand(2u);
+    if (dec->GetSingleWordInOperand(1u) == SpvDecorationBuiltIn)
+      builtin =
+          BuiltIn(static_cast<SpvBuiltIn>(dec->GetSingleWordInOperand(2u)));
   }
-  std::cout << storage_class << "(" << descriptor_set << ", " << binding << ")";
+  std::cout << storage_class << "(";
+  if (descriptor_set != 0) {
+    std::cout << descriptor_set << ", " << binding;
+  } else {
+    std::cout << builtin;
+  }
+  std::cout << ")";
+}
+
+void ConditionDependencies::PrintPhi(Instruction* inst) {
+  auto block = context()->get_instr_block(inst);
+  auto iter = merge_to_header_.find(block->id());
+  if (iter == merge_to_header_.end()) {
+    std::cout << "<x>";
+    return;
+  }
+  std::cout << "(";
+  auto& header = *block->GetParent()->FindBlock(iter->second);
+  auto branch = header.terminator();
+  assert(branch->opcode() == SpvOpBranchConditional);
+  PrintCondition(header.terminator()->GetSingleWordInOperand(0u));
+  std::cout << " ? ";
+  auto left_id = inst->GetSingleWordInOperand(0u);
+  auto left_block = inst->GetSingleWordInOperand(1u);
+  auto right_id = inst->GetSingleWordInOperand(2u);
+  // auto right_block = inst->GetSingleWordInOperand(3u);
+  bool reverse = true;
+  if (left_block == branch->GetSingleWordInOperand(1u) ||
+      left_block == header.id())
+    reverse = false;
+  PrintCondition(reverse ? right_id : left_id);
+  std::cout << " : ";
+  PrintCondition(reverse ? left_id : right_id);
+  std::cout << ")";
 }
 
 std::string ConditionDependencies::StorageClass(SpvStorageClass sc) {
@@ -163,8 +236,27 @@ std::string ConditionDependencies::StorageClass(SpvStorageClass sc) {
   }
 }
 
+std::string ConditionDependencies::BuiltIn(SpvBuiltIn builtin) {
+  switch (builtin) {
+    case SpvBuiltInGlobalInvocationId:
+      return "GlobalInvocationId";
+    default:
+      return "<builtin>";
+  }
+}
+
 std::string ConditionDependencies::Operator(SpvOp op) {
   switch (op) {
+    case SpvOpIAdd:
+    case SpvOpFAdd:
+      return "+";
+    case SpvOpFSub:
+    case SpvOpISub:
+      return "-";
+    case SpvOpBitwiseAnd:
+      return "&";
+    case SpvOpBitwiseOr:
+      return "|";
     case SpvOpLogicalOr:
       return "||";
     case SpvOpLogicalAnd:
