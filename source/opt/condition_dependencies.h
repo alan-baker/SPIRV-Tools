@@ -32,6 +32,7 @@ class ConditionDependencies : public Pass {
   void PrintCondition(uint32_t cond_id);
   void PrintVariable(Instruction* inst);
   void PrintPhi(Instruction* inst);
+  void PrintExtInst(Instruction* inst);
   std::string StorageClass(SpvStorageClass sc);
   std::string BuiltIn(SpvBuiltIn builtin);
   std::string Operator(SpvOp op);

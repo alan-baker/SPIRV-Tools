@@ -70,6 +70,11 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
     case SpvOpFAdd:
     case SpvOpISub:
     case SpvOpFSub:
+    case SpvOpIMul:
+    case SpvOpFMul:
+    case SpvOpSDiv:
+    case SpvOpUDiv:
+    case SpvOpFDiv:
     case SpvOpBitwiseAnd:
     case SpvOpBitwiseOr:
     case SpvOpLogicalOr:
@@ -144,8 +149,11 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
     case SpvOpPhi:
       PrintPhi(cond);
       break;
+    case SpvOpExtInst:
+      PrintExtInst(cond);
+      break;
     default:
-      std::cout << "<x>";
+      std::cout << "<%" << cond->result_id() << ">";
       break;
   }
 }
@@ -180,7 +188,7 @@ void ConditionDependencies::PrintPhi(Instruction* inst) {
   auto block = context()->get_instr_block(inst);
   auto iter = merge_to_header_.find(block->id());
   if (iter == merge_to_header_.end()) {
-    std::cout << "<x>";
+    std::cout << "<%" << inst->result_id() << ">";
     return;
   }
   std::cout << "(";
@@ -201,6 +209,28 @@ void ConditionDependencies::PrintPhi(Instruction* inst) {
   std::cout << " : ";
   PrintCondition(reverse ? left_id : right_id);
   std::cout << ")";
+}
+
+void ConditionDependencies::PrintExtInst(Instruction* inst) {
+  auto import = get_def_use_mgr()->GetDef(inst->GetSingleWordInOperand(0u));
+  std::string inst_set =
+      reinterpret_cast<const char*>(import->GetOperand(1u).words.data());
+  if (inst_set == "GLSL.std.450") {
+    GLSLstd450 ext_op =
+        static_cast<GLSLstd450>(inst->GetSingleWordInOperand(1u));
+    switch (ext_op) {
+      case GLSLstd450FAbs:
+        std::cout << "|";
+        PrintCondition(inst->GetSingleWordInOperand(2u));
+        std::cout << "|";
+        break;
+      default:
+        std::cout << "<%" << inst->result_id() << ">";
+        break;
+    }
+  } else {
+    std::cout << "<%" << inst->result_id() << ">";
+  }
 }
 
 std::string ConditionDependencies::StorageClass(SpvStorageClass sc) {
@@ -253,6 +283,13 @@ std::string ConditionDependencies::Operator(SpvOp op) {
     case SpvOpFSub:
     case SpvOpISub:
       return "-";
+    case SpvOpIMul:
+    case SpvOpFMul:
+      return "*";
+    case SpvOpSDiv:
+    case SpvOpUDiv:
+    case SpvOpFDiv:
+      return "/";
     case SpvOpBitwiseAnd:
       return "&";
     case SpvOpBitwiseOr:
