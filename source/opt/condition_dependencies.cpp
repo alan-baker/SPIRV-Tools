@@ -42,7 +42,7 @@ Pass::Status ConditionDependencies::Process() {
       block.ForEachInst([this](Instruction* inst) {
         switch (inst->opcode()) {
           case SpvOpSelect:
-            std::cout << " " << inst->PrettyPrint(0) << "\n";
+            std::cout << " " << inst->PrettyPrint(0) << "\n  ";
             PrintCondition(inst->GetSingleWordInOperand(0u));
             std::cout << "\n";
             break;
@@ -78,6 +78,7 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
       std::cout << ")";
       break;
     // Binary ops
+    case SpvOpShiftRightLogical:
     case SpvOpIAdd:
     case SpvOpFAdd:
     case SpvOpISub:
@@ -170,6 +171,23 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
         std::cout << ".[" << cond->GetSingleWordInOperand(i) << "]";
       }
       break;
+    case SpvOpVectorExtractDynamic:
+      PrintCondition(cond->GetSingleWordInOperand(0u));
+      std::cout << ".[";
+      PrintCondition(cond->GetSingleWordInOperand(1u));
+      std::cout << "]";
+      break;
+    case SpvOpConvertUToF:
+      std::cout << "(float)(";
+      PrintCondition(cond->GetSingleWordInOperand(0u));
+      std::cout << ")";
+    case SpvOpBitcast: {
+      auto type = context()->get_type_mgr()->GetType(cond->type_id());
+      std::cout << "reinterpret_cast<" << type->str() << ">(";
+      PrintCondition(cond->GetSingleWordInOperand(0u));
+      std::cout << ")";
+      break;
+    }
     default:
       std::cout << "<%" << cond->result_id() << ">";
       break;
@@ -242,6 +260,15 @@ void ConditionDependencies::PrintExtInst(Instruction* inst) {
         PrintCondition(inst->GetSingleWordInOperand(2u));
         std::cout << "|";
         break;
+      case GLSLstd450Fma:
+        std::cout << "fma(";
+        PrintCondition(inst->GetSingleWordInOperand(2u));
+        std::cout << ", ";
+        PrintCondition(inst->GetSingleWordInOperand(3u));
+        std::cout << ", ";
+        PrintCondition(inst->GetSingleWordInOperand(4u));
+        std::cout << ")";
+        break;
       default:
         std::cout << "<%" << inst->result_id() << ">";
         break;
@@ -295,6 +322,8 @@ std::string ConditionDependencies::BuiltIn(SpvBuiltIn builtin) {
 
 std::string ConditionDependencies::Operator(SpvOp op) {
   switch (op) {
+    case SpvOpShiftRightLogical:
+      return ">>";
     case SpvOpIAdd:
     case SpvOpFAdd:
       return "+";
