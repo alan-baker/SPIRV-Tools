@@ -39,12 +39,24 @@ Pass::Status ConditionDependencies::Process() {
     std::cout << "\n";
 
     for (auto& block : function) {
+      block.ForEachInst([this](Instruction* inst) {
+        switch (inst->opcode()) {
+          case SpvOpSelect:
+            std::cout << " " << inst->PrettyPrint(0) << "\n";
+            PrintCondition(inst->GetSingleWordInOperand(0u));
+            std::cout << "\n";
+            break;
+          default:
+            break;
+        }
+      });
+
       auto terminator = block.terminator();
       if (terminator->opcode() != SpvOpBranchConditional) continue;
 
       std::cout << " "
-                << terminator->PrettyPrint(
-                       SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES)
+                << terminator->PrettyPrint(0)
+                // SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES)
                 << "\n  ";
       PrintCondition(terminator->GetSingleWordInOperand(0u));
       std::cout << "\n";
@@ -151,6 +163,12 @@ void ConditionDependencies::PrintCondition(uint32_t cond_id) {
       break;
     case SpvOpExtInst:
       PrintExtInst(cond);
+      break;
+    case SpvOpCompositeExtract:
+      PrintCondition(cond->GetSingleWordInOperand(0u));
+      for (unsigned i = 1; i < cond->NumInOperands(); ++i) {
+        std::cout << ".[" << cond->GetSingleWordInOperand(i) << "]";
+      }
       break;
     default:
       std::cout << "<%" << cond->result_id() << ">";
