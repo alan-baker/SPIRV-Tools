@@ -454,7 +454,7 @@ OpControlBarrier %subgroup %subgroup %none
   EXPECT_THAT(
       getDiagnosticString(),
       HasSubstr("ControlBarrier: in Vulkan 1.0 environment Memory Scope is "
-                "limited to Device, Workgroup and Invocation"));
+                "limited to Device and Workgroup"));
 }
 
 TEST_F(ValidateBarriers, OpControlBarrierVulkan1p1MemoryScopeSubgroup) {
@@ -476,6 +476,18 @@ OpControlBarrier %subgroup %cross_device %none
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("ControlBarrier: in Vulkan environment, Memory Scope "
                         "cannot be CrossDevice"));
+}
+
+TEST_F(ValidateBarriers, OpControlBarrierVulkanMemoryScopeInvocation) {
+  const std::string body = R"(
+OpControlBarrier %workgroup %invocation %none
+)";
+
+  CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_0);
+  ASSERT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("ControlBarrier: in Vulkan environment, Memory Scope "
+                        "cannot be Invocation"));
 }
 
 TEST_F(ValidateBarriers, OpControlBarrierWebGPUMemoryScopeNonWorkgroup) {
@@ -848,7 +860,7 @@ OpMemoryBarrier %subgroup %acquire_release_uniform_workgroup
   EXPECT_THAT(
       getDiagnosticString(),
       HasSubstr("MemoryBarrier: in Vulkan 1.0 environment Memory Scope is "
-                "limited to Device, Workgroup and Invocation"));
+                "limited to Device and Workgroup"));
 }
 
 TEST_F(ValidateBarriers, OpMemoryBarrierVulkan1p1MemoryScopeSubgroup) {
@@ -858,6 +870,18 @@ OpMemoryBarrier %subgroup %acquire_release_uniform_workgroup
 
   CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_1);
   ASSERT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_VULKAN_1_1));
+}
+
+TEST_F(ValidateBarriers, OpMemoryBarrierVulkanMemoryScopeInvocation) {
+  const std::string body = R"(
+OpMemoryBarrier %invocation %none
+)";
+
+  CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_0);
+  ASSERT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("MemoryBarrier: in Vulkan environment, Memory Scope "
+                        "cannot be Invocation"));
 }
 
 TEST_F(ValidateBarriers, OpMemoryBarrierAcquireAndRelease) {

@@ -143,10 +143,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -205,7 +205,7 @@ OpFunctionEnd
 %52 = OpFunctionParameter %uint
 %53 = OpLabel
 %59 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%62 = OpAtomicIAdd %uint %59 %uint_4 %uint_0 %uint_9
+%62 = OpAtomicIAdd %uint %59 %uint_2 %uint_0 %uint_9
 %63 = OpIAdd %uint %62 %uint_9
 %64 = OpArrayLength %uint %57 1
 %65 = OpULessThanEqual %bool %63 %64
@@ -218,9 +218,9 @@ OpStore %70 %uint_9
 %72 = OpIAdd %uint %62 %uint_1
 %73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
 OpStore %73 %uint_23
-%75 = OpIAdd %uint %62 %uint_2
-%76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
-OpStore %76 %49
+%74 = OpIAdd %uint %62 %uint_2
+%75 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %74
+OpStore %75 %49
 %78 = OpIAdd %uint %62 %uint_3
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %78
 OpStore %79 %uint_4
@@ -489,10 +489,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -584,7 +584,7 @@ OpFunctionEnd
 %60 = OpFunctionParameter %uint
 %61 = OpLabel
 %67 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%70 = OpAtomicIAdd %uint %67 %uint_4 %uint_0 %uint_9
+%70 = OpAtomicIAdd %uint %67 %uint_2 %uint_0 %uint_9
 %71 = OpIAdd %uint %70 %uint_9
 %72 = OpArrayLength %uint %65 1
 %73 = OpULessThanEqual %bool %71 %72
@@ -597,9 +597,9 @@ OpStore %78 %uint_9
 %80 = OpIAdd %uint %70 %uint_1
 %81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
 OpStore %81 %uint_23
-%83 = OpIAdd %uint %70 %uint_2
-%84 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %83
-OpStore %84 %57
+%82 = OpIAdd %uint %70 %uint_2
+%83 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %82
+OpStore %83 %57
 %86 = OpIAdd %uint %70 %uint_3
 %87 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %86
 OpStore %87 %uint_4
@@ -746,10 +746,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %53 = OpVariable %_ptr_StorageBuffer__struct_51 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -812,7 +812,7 @@ OpFunctionEnd
 %48 = OpFunctionParameter %uint
 %49 = OpLabel
 %55 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_0
-%58 = OpAtomicIAdd %uint %55 %uint_4 %uint_0 %uint_9
+%58 = OpAtomicIAdd %uint %55 %uint_2 %uint_0 %uint_9
 %59 = OpIAdd %uint %58 %uint_9
 %60 = OpArrayLength %uint %53 1
 %61 = OpULessThanEqual %bool %59 %60
@@ -825,9 +825,9 @@ OpStore %66 %uint_9
 %68 = OpIAdd %uint %58 %uint_1
 %69 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %68
 OpStore %69 %uint_23
-%71 = OpIAdd %uint %58 %uint_2
-%72 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %71
-OpStore %72 %45
+%70 = OpIAdd %uint %58 %uint_2
+%71 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %70
+OpStore %71 %45
 %74 = OpIAdd %uint %58 %uint_3
 %75 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %74
 OpStore %75 %uint_4
@@ -972,10 +972,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %51 = OpVariable %_ptr_StorageBuffer__struct_49 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -1035,7 +1035,7 @@ OpFunctionEnd
 %46 = OpFunctionParameter %uint
 %47 = OpLabel
 %53 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_0
-%56 = OpAtomicIAdd %uint %53 %uint_4 %uint_0 %uint_9
+%56 = OpAtomicIAdd %uint %53 %uint_2 %uint_0 %uint_9
 %57 = OpIAdd %uint %56 %uint_9
 %58 = OpArrayLength %uint %51 1
 %59 = OpULessThanEqual %bool %57 %58
@@ -1048,9 +1048,9 @@ OpStore %64 %uint_9
 %66 = OpIAdd %uint %56 %uint_1
 %67 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %66
 OpStore %67 %uint_23
-%69 = OpIAdd %uint %56 %uint_2
-%70 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %69
-OpStore %70 %43
+%68 = OpIAdd %uint %56 %uint_2
+%69 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %68
+OpStore %69 %43
 %72 = OpIAdd %uint %56 %uint_3
 %73 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %72
 OpStore %73 %uint_4
@@ -1199,10 +1199,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %50 = OpVariable %_ptr_StorageBuffer__struct_48 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -1260,7 +1260,7 @@ OpFunctionEnd
 %45 = OpFunctionParameter %uint
 %46 = OpLabel
 %52 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_0
-%55 = OpAtomicIAdd %uint %52 %uint_4 %uint_0 %uint_9
+%55 = OpAtomicIAdd %uint %52 %uint_2 %uint_0 %uint_9
 %56 = OpIAdd %uint %55 %uint_9
 %57 = OpArrayLength %uint %50 1
 %58 = OpULessThanEqual %bool %56 %57
@@ -1273,9 +1273,9 @@ OpStore %63 %uint_9
 %65 = OpIAdd %uint %55 %uint_1
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %65
 OpStore %66 %uint_23
-%68 = OpIAdd %uint %55 %uint_2
-%69 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %68
-OpStore %69 %42
+%67 = OpIAdd %uint %55 %uint_2
+%68 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %67
+OpStore %68 %42
 %71 = OpIAdd %uint %55 %uint_3
 %72 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %71
 OpStore %72 %uint_4
@@ -1461,12 +1461,12 @@ OpDecorate %gl_InstanceIndex BuiltIn InstanceIndex
 %63 = OpVariable %_ptr_StorageBuffer__struct_61 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_uint = OpTypePointer Input %uint
 %gl_VertexIndex = OpVariable %_ptr_Input_uint Input
+%uint_4 = OpConstant %uint 4
 %gl_InstanceIndex = OpVariable %_ptr_Input_uint Input
 %uint_5 = OpConstant %uint 5
 %uint_6 = OpConstant %uint 6
@@ -1536,7 +1536,7 @@ OpFunctionEnd
 %58 = OpFunctionParameter %uint
 %59 = OpLabel
 %65 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_0
-%68 = OpAtomicIAdd %uint %65 %uint_4 %uint_0 %uint_9
+%68 = OpAtomicIAdd %uint %65 %uint_2 %uint_0 %uint_9
 %69 = OpIAdd %uint %68 %uint_9
 %70 = OpArrayLength %uint %63 1
 %71 = OpULessThanEqual %bool %69 %70
@@ -1549,16 +1549,16 @@ OpStore %75 %uint_9
 %77 = OpIAdd %uint %68 %uint_1
 %78 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %77
 OpStore %78 %uint_23
-%80 = OpIAdd %uint %68 %uint_2
-%81 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %80
-OpStore %81 %55
-%83 = OpIAdd %uint %68 %uint_3
-%84 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %83
-OpStore %84 %uint_0
-%87 = OpLoad %uint %gl_VertexIndex
+%79 = OpIAdd %uint %68 %uint_2
+%80 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %79
+OpStore %80 %55
+%82 = OpIAdd %uint %68 %uint_3
+%83 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %82
+OpStore %83 %uint_0
+%86 = OpLoad %uint %gl_VertexIndex
 %88 = OpIAdd %uint %68 %uint_4
 %89 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %88
-OpStore %89 %87
+OpStore %89 %86
 %91 = OpLoad %uint %gl_InstanceIndex
 %93 = OpIAdd %uint %68 %uint_5
 %94 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %93
@@ -1739,10 +1739,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %79 = OpVariable %_ptr_StorageBuffer__struct_77 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -1857,7 +1857,7 @@ OpFunctionEnd
 %74 = OpFunctionParameter %uint
 %75 = OpLabel
 %81 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_0
-%84 = OpAtomicIAdd %uint %81 %uint_4 %uint_0 %uint_9
+%84 = OpAtomicIAdd %uint %81 %uint_2 %uint_0 %uint_9
 %85 = OpIAdd %uint %84 %uint_9
 %86 = OpArrayLength %uint %79 1
 %87 = OpULessThanEqual %bool %85 %86
@@ -1870,9 +1870,9 @@ OpStore %92 %uint_9
 %94 = OpIAdd %uint %84 %uint_1
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %94
 OpStore %95 %uint_23
-%97 = OpIAdd %uint %84 %uint_2
-%98 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %97
-OpStore %98 %71
+%96 = OpIAdd %uint %84 %uint_2
+%97 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %96
+OpStore %97 %71
 %100 = OpIAdd %uint %84 %uint_3
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %100
 OpStore %101 %uint_4
@@ -2043,8 +2043,8 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_71 = OpTypePointer StorageBuffer %_struct_71
 %73 = OpVariable %_ptr_StorageBuffer__struct_71 StorageBuffer
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
 %uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -2135,46 +2135,46 @@ OpFunctionEnd
 %69 = OpFunctionParameter %uint
 %70 = OpLabel
 %74 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_0
-%77 = OpAtomicIAdd %uint %74 %uint_4 %uint_0 %uint_9
-%78 = OpIAdd %uint %77 %uint_9
-%79 = OpArrayLength %uint %73 1
-%80 = OpULessThanEqual %bool %78 %79
-OpSelectionMerge %81 None
-OpBranchConditional %80 %82 %81
-%82 = OpLabel
-%83 = OpIAdd %uint %77 %uint_0
-%84 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %83
-OpStore %84 %uint_9
-%86 = OpIAdd %uint %77 %uint_1
-%87 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %86
-OpStore %87 %uint_23
-%88 = OpIAdd %uint %77 %uint_2
-%89 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %88
-OpStore %89 %66
-%91 = OpIAdd %uint %77 %uint_3
+%76 = OpAtomicIAdd %uint %74 %uint_2 %uint_0 %uint_9
+%77 = OpIAdd %uint %76 %uint_9
+%78 = OpArrayLength %uint %73 1
+%79 = OpULessThanEqual %bool %77 %78
+OpSelectionMerge %80 None
+OpBranchConditional %79 %81 %80
+%81 = OpLabel
+%82 = OpIAdd %uint %76 %uint_0
+%83 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %82
+OpStore %83 %uint_9
+%85 = OpIAdd %uint %76 %uint_1
+%86 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %85
+OpStore %86 %uint_23
+%87 = OpIAdd %uint %76 %uint_2
+%88 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %87
+OpStore %88 %66
+%91 = OpIAdd %uint %76 %uint_3
 %92 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %91
 OpStore %92 %uint_4
 %95 = OpLoad %v4float %gl_FragCoord
 %97 = OpBitcast %v4uint %95
 %98 = OpCompositeExtract %uint %97 0
-%99 = OpIAdd %uint %77 %uint_4
+%99 = OpIAdd %uint %76 %uint_4
 %100 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %99
 OpStore %100 %98
 %101 = OpCompositeExtract %uint %97 1
-%103 = OpIAdd %uint %77 %uint_5
+%103 = OpIAdd %uint %76 %uint_5
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %103
 OpStore %104 %101
-%106 = OpIAdd %uint %77 %uint_6
+%106 = OpIAdd %uint %76 %uint_6
 %107 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %106
 OpStore %107 %67
-%109 = OpIAdd %uint %77 %uint_7
+%109 = OpIAdd %uint %76 %uint_7
 %110 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %109
 OpStore %110 %68
-%112 = OpIAdd %uint %77 %uint_8
+%112 = OpIAdd %uint %76 %uint_8
 %113 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %112
 OpStore %113 %69
-OpBranch %81
-%81 = OpLabel
+OpBranch %80
+%80 = OpLabel
 OpReturn
 OpFunctionEnd
 %118 = OpFunction %uint None %119
@@ -2386,9 +2386,9 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_67 = OpTypePointer StorageBuffer %_struct_67
 %69 = OpVariable %_ptr_StorageBuffer__struct_67 StorageBuffer
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -2467,7 +2467,7 @@ OpFunctionEnd
 %65 = OpFunctionParameter %uint
 %66 = OpLabel
 %70 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_0
-%73 = OpAtomicIAdd %uint %70 %uint_4 %uint_0 %uint_9
+%73 = OpAtomicIAdd %uint %70 %uint_2 %uint_0 %uint_9
 %74 = OpIAdd %uint %73 %uint_9
 %75 = OpArrayLength %uint %69 1
 %76 = OpULessThanEqual %bool %74 %75
@@ -2480,9 +2480,9 @@ OpStore %80 %uint_9
 %82 = OpIAdd %uint %73 %uint_1
 %83 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %82
 OpStore %83 %uint_23
-%85 = OpIAdd %uint %73 %uint_2
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %85
-OpStore %86 %62
+%84 = OpIAdd %uint %73 %uint_2
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %84
+OpStore %85 %62
 %88 = OpIAdd %uint %73 %uint_3
 %89 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %88
 OpStore %89 %uint_4
@@ -2761,9 +2761,9 @@ OpDecorate %127 NonUniformEXT
 %_ptr_StorageBuffer__struct_55 = OpTypePointer StorageBuffer %_struct_55
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -2843,7 +2843,7 @@ OpFunctionEnd
 %53 = OpFunctionParameter %uint
 %54 = OpLabel
 %58 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%61 = OpAtomicIAdd %uint %58 %uint_4 %uint_0 %uint_9
+%61 = OpAtomicIAdd %uint %58 %uint_2 %uint_0 %uint_9
 %62 = OpIAdd %uint %61 %uint_9
 %63 = OpArrayLength %uint %57 1
 %64 = OpULessThanEqual %bool %62 %63
@@ -2856,9 +2856,9 @@ OpStore %68 %uint_9
 %70 = OpIAdd %uint %61 %uint_1
 %71 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %70
 OpStore %71 %uint_23
-%73 = OpIAdd %uint %61 %uint_2
-%74 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %73
-OpStore %74 %50
+%72 = OpIAdd %uint %61 %uint_2
+%73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
+OpStore %73 %50
 %75 = OpIAdd %uint %61 %uint_3
 %76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
 OpStore %76 %uint_4
@@ -3042,9 +3042,9 @@ OpDecorate %127 NonUniformEXT
 %_ptr_StorageBuffer__struct_55 = OpTypePointer StorageBuffer %_struct_55
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -3124,7 +3124,7 @@ OpFunctionEnd
 %53 = OpFunctionParameter %uint
 %54 = OpLabel
 %58 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%61 = OpAtomicIAdd %uint %58 %uint_4 %uint_0 %uint_9
+%61 = OpAtomicIAdd %uint %58 %uint_2 %uint_0 %uint_9
 %62 = OpIAdd %uint %61 %uint_9
 %63 = OpArrayLength %uint %57 1
 %64 = OpULessThanEqual %bool %62 %63
@@ -3137,9 +3137,9 @@ OpStore %68 %uint_9
 %70 = OpIAdd %uint %61 %uint_1
 %71 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %70
 OpStore %71 %uint_23
-%73 = OpIAdd %uint %61 %uint_2
-%74 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %73
-OpStore %74 %50
+%72 = OpIAdd %uint %61 %uint_2
+%73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
+OpStore %73 %50
 %75 = OpIAdd %uint %61 %uint_3
 %76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
 OpStore %76 %uint_4
@@ -3312,9 +3312,9 @@ OpDecorate %127 NonUniformEXT
 %_ptr_StorageBuffer__struct_55 = OpTypePointer StorageBuffer %_struct_55
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -3394,7 +3394,7 @@ OpFunctionEnd
 %53 = OpFunctionParameter %uint
 %54 = OpLabel
 %58 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%61 = OpAtomicIAdd %uint %58 %uint_4 %uint_0 %uint_9
+%61 = OpAtomicIAdd %uint %58 %uint_2 %uint_0 %uint_9
 %62 = OpIAdd %uint %61 %uint_9
 %63 = OpArrayLength %uint %57 1
 %64 = OpULessThanEqual %bool %62 %63
@@ -3407,9 +3407,9 @@ OpStore %68 %uint_9
 %70 = OpIAdd %uint %61 %uint_1
 %71 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %70
 OpStore %71 %uint_23
-%73 = OpIAdd %uint %61 %uint_2
-%74 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %73
-OpStore %74 %50
+%72 = OpIAdd %uint %61 %uint_2
+%73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
+OpStore %73 %50
 %75 = OpIAdd %uint %61 %uint_3
 %76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
 OpStore %76 %uint_4
@@ -3565,9 +3565,9 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_58 = OpTypePointer StorageBuffer %_struct_58
 %60 = OpVariable %_ptr_StorageBuffer__struct_58 StorageBuffer
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -3638,7 +3638,7 @@ OpFunctionEnd
 %56 = OpFunctionParameter %uint
 %57 = OpLabel
 %61 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_0
-%64 = OpAtomicIAdd %uint %61 %uint_4 %uint_0 %uint_9
+%64 = OpAtomicIAdd %uint %61 %uint_2 %uint_0 %uint_9
 %65 = OpIAdd %uint %64 %uint_9
 %66 = OpArrayLength %uint %60 1
 %67 = OpULessThanEqual %bool %65 %66
@@ -3651,9 +3651,9 @@ OpStore %71 %uint_9
 %73 = OpIAdd %uint %64 %uint_1
 %74 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %73
 OpStore %74 %uint_23
-%76 = OpIAdd %uint %64 %uint_2
-%77 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %76
-OpStore %77 %53
+%75 = OpIAdd %uint %64 %uint_2
+%76 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %75
+OpStore %76 %53
 %78 = OpIAdd %uint %64 %uint_3
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %78
 OpStore %79 %uint_4
@@ -3814,8 +3814,8 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_54 = OpTypePointer StorageBuffer %_struct_54
 %56 = OpVariable %_ptr_StorageBuffer__struct_54 StorageBuffer
 %uint_9 = OpConstant %uint 9
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_3 = OpConstant %uint 3
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
@@ -3893,46 +3893,46 @@ OpFunctionEnd
 %52 = OpFunctionParameter %uint
 %53 = OpLabel
 %57 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_0
-%59 = OpAtomicIAdd %uint %57 %uint_4 %uint_0 %uint_9
-%60 = OpIAdd %uint %59 %uint_9
-%61 = OpArrayLength %uint %56 1
-%62 = OpULessThanEqual %bool %60 %61
-OpSelectionMerge %63 None
-OpBranchConditional %62 %64 %63
-%64 = OpLabel
-%65 = OpIAdd %uint %59 %uint_0
-%66 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %65
-OpStore %66 %uint_9
-%68 = OpIAdd %uint %59 %uint_1
-%69 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %68
-OpStore %69 %uint_23
-%71 = OpIAdd %uint %59 %uint_2
+%60 = OpAtomicIAdd %uint %57 %uint_2 %uint_0 %uint_9
+%61 = OpIAdd %uint %60 %uint_9
+%62 = OpArrayLength %uint %56 1
+%63 = OpULessThanEqual %bool %61 %62
+OpSelectionMerge %64 None
+OpBranchConditional %63 %65 %64
+%65 = OpLabel
+%66 = OpIAdd %uint %60 %uint_0
+%67 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %66
+OpStore %67 %uint_9
+%69 = OpIAdd %uint %60 %uint_1
+%70 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %69
+OpStore %70 %uint_23
+%71 = OpIAdd %uint %60 %uint_2
 %72 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %71
 OpStore %72 %49
-%74 = OpIAdd %uint %59 %uint_3
+%74 = OpIAdd %uint %60 %uint_3
 %75 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %74
 OpStore %75 %uint_4
 %79 = OpLoad %v4float %gl_FragCoord
 %81 = OpBitcast %v4uint %79
 %82 = OpCompositeExtract %uint %81 0
-%83 = OpIAdd %uint %59 %uint_4
+%83 = OpIAdd %uint %60 %uint_4
 %84 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %83
 OpStore %84 %82
 %85 = OpCompositeExtract %uint %81 1
-%87 = OpIAdd %uint %59 %uint_5
+%87 = OpIAdd %uint %60 %uint_5
 %88 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %87
 OpStore %88 %85
-%90 = OpIAdd %uint %59 %uint_6
+%90 = OpIAdd %uint %60 %uint_6
 %91 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %90
 OpStore %91 %50
-%93 = OpIAdd %uint %59 %uint_7
+%93 = OpIAdd %uint %60 %uint_7
 %94 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %93
 OpStore %94 %51
-%96 = OpIAdd %uint %59 %uint_8
+%96 = OpIAdd %uint %60 %uint_8
 %97 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %96
 OpStore %97 %52
-OpBranch %63
-%63 = OpLabel
+OpBranch %64
+%64 = OpLabel
 OpReturn
 OpFunctionEnd
 %101 = OpFunction %uint None %102
@@ -4087,10 +4087,10 @@ OpDecorate %117 NonUniformEXT
 %41 = OpVariable %_ptr_StorageBuffer__struct_39 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_9 = OpConstant %uint 9
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
@@ -4162,7 +4162,7 @@ OpFunctionEnd
 %36 = OpFunctionParameter %uint
 %37 = OpLabel
 %43 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_0
-%46 = OpAtomicIAdd %uint %43 %uint_4 %uint_0 %uint_9
+%46 = OpAtomicIAdd %uint %43 %uint_2 %uint_0 %uint_9
 %47 = OpIAdd %uint %46 %uint_9
 %48 = OpArrayLength %uint %41 1
 %49 = OpULessThanEqual %bool %47 %48
@@ -4175,9 +4175,9 @@ OpStore %54 %uint_9
 %56 = OpIAdd %uint %46 %uint_1
 %57 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %56
 OpStore %57 %uint_23
-%59 = OpIAdd %uint %46 %uint_2
-%60 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %59
-OpStore %60 %33
+%58 = OpIAdd %uint %46 %uint_2
+%59 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %58
+OpStore %59 %33
 %62 = OpIAdd %uint %46 %uint_3
 %63 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %62
 OpStore %63 %uint_4
@@ -4345,10 +4345,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -4407,7 +4407,7 @@ OpFunctionEnd
 %52 = OpFunctionParameter %uint
 %53 = OpLabel
 %59 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%62 = OpAtomicIAdd %uint %59 %uint_4 %uint_0 %uint_10
+%62 = OpAtomicIAdd %uint %59 %uint_2 %uint_0 %uint_10
 %63 = OpIAdd %uint %62 %uint_10
 %64 = OpArrayLength %uint %57 1
 %65 = OpULessThanEqual %bool %63 %64
@@ -4420,9 +4420,9 @@ OpStore %70 %uint_10
 %72 = OpIAdd %uint %62 %uint_1
 %73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
 OpStore %73 %uint_23
-%75 = OpIAdd %uint %62 %uint_2
-%76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
-OpStore %76 %49
+%74 = OpIAdd %uint %62 %uint_2
+%75 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %74
+OpStore %75 %49
 %78 = OpIAdd %uint %62 %uint_3
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %78
 OpStore %79 %uint_4
@@ -4611,10 +4611,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -4706,7 +4706,7 @@ OpFunctionEnd
 %60 = OpFunctionParameter %uint
 %61 = OpLabel
 %67 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%70 = OpAtomicIAdd %uint %67 %uint_4 %uint_0 %uint_10
+%70 = OpAtomicIAdd %uint %67 %uint_2 %uint_0 %uint_10
 %71 = OpIAdd %uint %70 %uint_10
 %72 = OpArrayLength %uint %65 1
 %73 = OpULessThanEqual %bool %71 %72
@@ -4719,9 +4719,9 @@ OpStore %78 %uint_10
 %80 = OpIAdd %uint %70 %uint_1
 %81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
 OpStore %81 %uint_23
-%83 = OpIAdd %uint %70 %uint_2
-%84 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %83
-OpStore %84 %57
+%82 = OpIAdd %uint %70 %uint_2
+%83 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %82
+OpStore %83 %57
 %86 = OpIAdd %uint %70 %uint_3
 %87 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %86
 OpStore %87 %uint_4
@@ -4868,10 +4868,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %53 = OpVariable %_ptr_StorageBuffer__struct_51 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -4934,7 +4934,7 @@ OpFunctionEnd
 %48 = OpFunctionParameter %uint
 %49 = OpLabel
 %55 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_0
-%58 = OpAtomicIAdd %uint %55 %uint_4 %uint_0 %uint_10
+%58 = OpAtomicIAdd %uint %55 %uint_2 %uint_0 %uint_10
 %59 = OpIAdd %uint %58 %uint_10
 %60 = OpArrayLength %uint %53 1
 %61 = OpULessThanEqual %bool %59 %60
@@ -4947,9 +4947,9 @@ OpStore %66 %uint_10
 %68 = OpIAdd %uint %58 %uint_1
 %69 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %68
 OpStore %69 %uint_23
-%71 = OpIAdd %uint %58 %uint_2
-%72 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %71
-OpStore %72 %45
+%70 = OpIAdd %uint %58 %uint_2
+%71 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %70
+OpStore %71 %45
 %74 = OpIAdd %uint %58 %uint_3
 %75 = OpAccessChain %_ptr_StorageBuffer_uint %53 %uint_1 %74
 OpStore %75 %uint_4
@@ -5094,10 +5094,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %51 = OpVariable %_ptr_StorageBuffer__struct_49 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -5157,7 +5157,7 @@ OpFunctionEnd
 %46 = OpFunctionParameter %uint
 %47 = OpLabel
 %53 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_0
-%56 = OpAtomicIAdd %uint %53 %uint_4 %uint_0 %uint_10
+%56 = OpAtomicIAdd %uint %53 %uint_2 %uint_0 %uint_10
 %57 = OpIAdd %uint %56 %uint_10
 %58 = OpArrayLength %uint %51 1
 %59 = OpULessThanEqual %bool %57 %58
@@ -5170,9 +5170,9 @@ OpStore %64 %uint_10
 %66 = OpIAdd %uint %56 %uint_1
 %67 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %66
 OpStore %67 %uint_23
-%69 = OpIAdd %uint %56 %uint_2
-%70 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %69
-OpStore %70 %43
+%68 = OpIAdd %uint %56 %uint_2
+%69 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %68
+OpStore %69 %43
 %72 = OpIAdd %uint %56 %uint_3
 %73 = OpAccessChain %_ptr_StorageBuffer_uint %51 %uint_1 %72
 OpStore %73 %uint_4
@@ -5321,10 +5321,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %50 = OpVariable %_ptr_StorageBuffer__struct_48 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -5382,7 +5382,7 @@ OpFunctionEnd
 %45 = OpFunctionParameter %uint
 %46 = OpLabel
 %52 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_0
-%55 = OpAtomicIAdd %uint %52 %uint_4 %uint_0 %uint_10
+%55 = OpAtomicIAdd %uint %52 %uint_2 %uint_0 %uint_10
 %56 = OpIAdd %uint %55 %uint_10
 %57 = OpArrayLength %uint %50 1
 %58 = OpULessThanEqual %bool %56 %57
@@ -5395,9 +5395,9 @@ OpStore %63 %uint_10
 %65 = OpIAdd %uint %55 %uint_1
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %65
 OpStore %66 %uint_23
-%68 = OpIAdd %uint %55 %uint_2
-%69 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %68
-OpStore %69 %42
+%67 = OpIAdd %uint %55 %uint_2
+%68 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %67
+OpStore %68 %42
 %71 = OpIAdd %uint %55 %uint_3
 %72 = OpAccessChain %_ptr_StorageBuffer_uint %50 %uint_1 %71
 OpStore %72 %uint_4
@@ -5583,12 +5583,12 @@ OpDecorate %gl_InstanceIndex BuiltIn InstanceIndex
 %63 = OpVariable %_ptr_StorageBuffer__struct_61 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_uint = OpTypePointer Input %uint
 %gl_VertexIndex = OpVariable %_ptr_Input_uint Input
+%uint_4 = OpConstant %uint 4
 %gl_InstanceIndex = OpVariable %_ptr_Input_uint Input
 %uint_5 = OpConstant %uint 5
 %uint_7 = OpConstant %uint 7
@@ -5658,7 +5658,7 @@ OpFunctionEnd
 %58 = OpFunctionParameter %uint
 %59 = OpLabel
 %65 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_0
-%68 = OpAtomicIAdd %uint %65 %uint_4 %uint_0 %uint_10
+%68 = OpAtomicIAdd %uint %65 %uint_2 %uint_0 %uint_10
 %69 = OpIAdd %uint %68 %uint_10
 %70 = OpArrayLength %uint %63 1
 %71 = OpULessThanEqual %bool %69 %70
@@ -5671,16 +5671,16 @@ OpStore %75 %uint_10
 %77 = OpIAdd %uint %68 %uint_1
 %78 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %77
 OpStore %78 %uint_23
-%80 = OpIAdd %uint %68 %uint_2
-%81 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %80
-OpStore %81 %55
-%83 = OpIAdd %uint %68 %uint_3
-%84 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %83
-OpStore %84 %uint_0
-%87 = OpLoad %uint %gl_VertexIndex
+%79 = OpIAdd %uint %68 %uint_2
+%80 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %79
+OpStore %80 %55
+%82 = OpIAdd %uint %68 %uint_3
+%83 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %82
+OpStore %83 %uint_0
+%86 = OpLoad %uint %gl_VertexIndex
 %88 = OpIAdd %uint %68 %uint_4
 %89 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %88
-OpStore %89 %87
+OpStore %89 %86
 %91 = OpLoad %uint %gl_InstanceIndex
 %93 = OpIAdd %uint %68 %uint_5
 %94 = OpAccessChain %_ptr_StorageBuffer_uint %63 %uint_1 %93
@@ -5865,12 +5865,12 @@ OpDecorate %gl_TessCoord BuiltIn TessCoord
 %49 = OpVariable %_ptr_StorageBuffer__struct_47 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_uint = OpTypePointer Input %uint
 %gl_PrimitiveID = OpVariable %_ptr_Input_uint Input
+%uint_4 = OpConstant %uint 4
 %v3float = OpTypeVector %float 3
 %_ptr_Input_v3float = OpTypePointer Input %v3float
 %gl_TessCoord = OpVariable %_ptr_Input_v3float Input
@@ -5928,7 +5928,7 @@ OpFunctionEnd
 %44 = OpFunctionParameter %uint
 %45 = OpLabel
 %51 = OpAccessChain %_ptr_StorageBuffer_uint %49 %uint_0
-%54 = OpAtomicIAdd %uint %51 %uint_4 %uint_0 %uint_10
+%54 = OpAtomicIAdd %uint %51 %uint_2 %uint_0 %uint_10
 %55 = OpIAdd %uint %54 %uint_10
 %56 = OpArrayLength %uint %49 1
 %57 = OpULessThanEqual %bool %55 %56
@@ -5941,16 +5941,16 @@ OpStore %61 %uint_10
 %63 = OpIAdd %uint %54 %uint_1
 %64 = OpAccessChain %_ptr_StorageBuffer_uint %49 %uint_1 %63
 OpStore %64 %uint_23
-%66 = OpIAdd %uint %54 %uint_2
-%67 = OpAccessChain %_ptr_StorageBuffer_uint %49 %uint_1 %66
-OpStore %67 %41
-%69 = OpIAdd %uint %54 %uint_3
-%70 = OpAccessChain %_ptr_StorageBuffer_uint %49 %uint_1 %69
-OpStore %70 %uint_2
-%73 = OpLoad %uint %gl_PrimitiveID
+%65 = OpIAdd %uint %54 %uint_2
+%66 = OpAccessChain %_ptr_StorageBuffer_uint %49 %uint_1 %65
+OpStore %66 %41
+%68 = OpIAdd %uint %54 %uint_3
+%69 = OpAccessChain %_ptr_StorageBuffer_uint %49 %uint_1 %68
+OpStore %69 %uint_2
+%72 = OpLoad %uint %gl_PrimitiveID
 %74 = OpIAdd %uint %54 %uint_4
 %75 = OpAccessChain %_ptr_StorageBuffer_uint %49 %uint_1 %74
-OpStore %75 %73
+OpStore %75 %72
 %79 = OpLoad %v3float %gl_TessCoord
 %81 = OpBitcast %v3uint %79
 %82 = OpCompositeExtract %uint %81 0
@@ -6137,10 +6137,10 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %79 = OpVariable %_ptr_StorageBuffer__struct_77 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -6255,7 +6255,7 @@ OpFunctionEnd
 %74 = OpFunctionParameter %uint
 %75 = OpLabel
 %81 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_0
-%84 = OpAtomicIAdd %uint %81 %uint_4 %uint_0 %uint_10
+%84 = OpAtomicIAdd %uint %81 %uint_2 %uint_0 %uint_10
 %85 = OpIAdd %uint %84 %uint_10
 %86 = OpArrayLength %uint %79 1
 %87 = OpULessThanEqual %bool %85 %86
@@ -6268,9 +6268,9 @@ OpStore %92 %uint_10
 %94 = OpIAdd %uint %84 %uint_1
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %94
 OpStore %95 %uint_23
-%97 = OpIAdd %uint %84 %uint_2
-%98 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %97
-OpStore %98 %71
+%96 = OpIAdd %uint %84 %uint_2
+%97 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %96
+OpStore %97 %71
 %100 = OpIAdd %uint %84 %uint_3
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %79 %uint_1 %100
 OpStore %101 %uint_4
@@ -6441,8 +6441,8 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_71 = OpTypePointer StorageBuffer %_struct_71
 %73 = OpVariable %_ptr_StorageBuffer__struct_71 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
 %uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -6533,46 +6533,46 @@ OpFunctionEnd
 %69 = OpFunctionParameter %uint
 %70 = OpLabel
 %74 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_0
-%77 = OpAtomicIAdd %uint %74 %uint_4 %uint_0 %uint_10
-%78 = OpIAdd %uint %77 %uint_10
-%79 = OpArrayLength %uint %73 1
-%80 = OpULessThanEqual %bool %78 %79
-OpSelectionMerge %81 None
-OpBranchConditional %80 %82 %81
-%82 = OpLabel
-%83 = OpIAdd %uint %77 %uint_0
-%84 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %83
-OpStore %84 %uint_10
-%86 = OpIAdd %uint %77 %uint_1
-%87 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %86
-OpStore %87 %uint_23
-%88 = OpIAdd %uint %77 %uint_2
-%89 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %88
-OpStore %89 %66
-%91 = OpIAdd %uint %77 %uint_3
+%76 = OpAtomicIAdd %uint %74 %uint_2 %uint_0 %uint_10
+%77 = OpIAdd %uint %76 %uint_10
+%78 = OpArrayLength %uint %73 1
+%79 = OpULessThanEqual %bool %77 %78
+OpSelectionMerge %80 None
+OpBranchConditional %79 %81 %80
+%81 = OpLabel
+%82 = OpIAdd %uint %76 %uint_0
+%83 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %82
+OpStore %83 %uint_10
+%85 = OpIAdd %uint %76 %uint_1
+%86 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %85
+OpStore %86 %uint_23
+%87 = OpIAdd %uint %76 %uint_2
+%88 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %87
+OpStore %88 %66
+%91 = OpIAdd %uint %76 %uint_3
 %92 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %91
 OpStore %92 %uint_4
 %95 = OpLoad %v4float %gl_FragCoord
 %97 = OpBitcast %v4uint %95
 %98 = OpCompositeExtract %uint %97 0
-%99 = OpIAdd %uint %77 %uint_4
+%99 = OpIAdd %uint %76 %uint_4
 %100 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %99
 OpStore %100 %98
 %101 = OpCompositeExtract %uint %97 1
-%103 = OpIAdd %uint %77 %uint_5
+%103 = OpIAdd %uint %76 %uint_5
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %103
 OpStore %104 %101
-%106 = OpIAdd %uint %77 %uint_7
+%106 = OpIAdd %uint %76 %uint_7
 %107 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %106
 OpStore %107 %67
-%109 = OpIAdd %uint %77 %uint_8
+%109 = OpIAdd %uint %76 %uint_8
 %110 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %109
 OpStore %110 %68
-%112 = OpIAdd %uint %77 %uint_9
+%112 = OpIAdd %uint %76 %uint_9
 %113 = OpAccessChain %_ptr_StorageBuffer_uint %73 %uint_1 %112
 OpStore %113 %69
-OpBranch %81
-%81 = OpLabel
+OpBranch %80
+%80 = OpLabel
 OpReturn
 OpFunctionEnd
 %118 = OpFunction %uint None %119
@@ -6707,9 +6707,9 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_67 = OpTypePointer StorageBuffer %_struct_67
 %69 = OpVariable %_ptr_StorageBuffer__struct_67 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -6788,7 +6788,7 @@ OpFunctionEnd
 %65 = OpFunctionParameter %uint
 %66 = OpLabel
 %70 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_0
-%73 = OpAtomicIAdd %uint %70 %uint_4 %uint_0 %uint_10
+%73 = OpAtomicIAdd %uint %70 %uint_2 %uint_0 %uint_10
 %74 = OpIAdd %uint %73 %uint_10
 %75 = OpArrayLength %uint %69 1
 %76 = OpULessThanEqual %bool %74 %75
@@ -6801,9 +6801,9 @@ OpStore %80 %uint_10
 %82 = OpIAdd %uint %73 %uint_1
 %83 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %82
 OpStore %83 %uint_23
-%85 = OpIAdd %uint %73 %uint_2
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %85
-OpStore %86 %62
+%84 = OpIAdd %uint %73 %uint_2
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %84
+OpStore %85 %62
 %88 = OpIAdd %uint %73 %uint_3
 %89 = OpAccessChain %_ptr_StorageBuffer_uint %69 %uint_1 %88
 OpStore %89 %uint_4
@@ -7084,9 +7084,9 @@ OpDecorate %127 NonUniformEXT
 %_ptr_StorageBuffer__struct_55 = OpTypePointer StorageBuffer %_struct_55
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -7166,7 +7166,7 @@ OpFunctionEnd
 %53 = OpFunctionParameter %uint
 %54 = OpLabel
 %58 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%61 = OpAtomicIAdd %uint %58 %uint_4 %uint_0 %uint_10
+%61 = OpAtomicIAdd %uint %58 %uint_2 %uint_0 %uint_10
 %62 = OpIAdd %uint %61 %uint_10
 %63 = OpArrayLength %uint %57 1
 %64 = OpULessThanEqual %bool %62 %63
@@ -7179,9 +7179,9 @@ OpStore %68 %uint_10
 %70 = OpIAdd %uint %61 %uint_1
 %71 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %70
 OpStore %71 %uint_23
-%73 = OpIAdd %uint %61 %uint_2
-%74 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %73
-OpStore %74 %50
+%72 = OpIAdd %uint %61 %uint_2
+%73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
+OpStore %73 %50
 %75 = OpIAdd %uint %61 %uint_3
 %76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
 OpStore %76 %uint_4
@@ -7365,9 +7365,9 @@ OpDecorate %127 NonUniformEXT
 %_ptr_StorageBuffer__struct_55 = OpTypePointer StorageBuffer %_struct_55
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -7447,7 +7447,7 @@ OpFunctionEnd
 %53 = OpFunctionParameter %uint
 %54 = OpLabel
 %58 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%61 = OpAtomicIAdd %uint %58 %uint_4 %uint_0 %uint_10
+%61 = OpAtomicIAdd %uint %58 %uint_2 %uint_0 %uint_10
 %62 = OpIAdd %uint %61 %uint_10
 %63 = OpArrayLength %uint %57 1
 %64 = OpULessThanEqual %bool %62 %63
@@ -7460,9 +7460,9 @@ OpStore %68 %uint_10
 %70 = OpIAdd %uint %61 %uint_1
 %71 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %70
 OpStore %71 %uint_23
-%73 = OpIAdd %uint %61 %uint_2
-%74 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %73
-OpStore %74 %50
+%72 = OpIAdd %uint %61 %uint_2
+%73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
+OpStore %73 %50
 %75 = OpIAdd %uint %61 %uint_3
 %76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
 OpStore %76 %uint_4
@@ -7635,9 +7635,9 @@ OpDecorate %127 NonUniformEXT
 %_ptr_StorageBuffer__struct_55 = OpTypePointer StorageBuffer %_struct_55
 %57 = OpVariable %_ptr_StorageBuffer__struct_55 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -7717,7 +7717,7 @@ OpFunctionEnd
 %53 = OpFunctionParameter %uint
 %54 = OpLabel
 %58 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_0
-%61 = OpAtomicIAdd %uint %58 %uint_4 %uint_0 %uint_10
+%61 = OpAtomicIAdd %uint %58 %uint_2 %uint_0 %uint_10
 %62 = OpIAdd %uint %61 %uint_10
 %63 = OpArrayLength %uint %57 1
 %64 = OpULessThanEqual %bool %62 %63
@@ -7730,9 +7730,9 @@ OpStore %68 %uint_10
 %70 = OpIAdd %uint %61 %uint_1
 %71 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %70
 OpStore %71 %uint_23
-%73 = OpIAdd %uint %61 %uint_2
-%74 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %73
-OpStore %74 %50
+%72 = OpIAdd %uint %61 %uint_2
+%73 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %72
+OpStore %73 %50
 %75 = OpIAdd %uint %61 %uint_3
 %76 = OpAccessChain %_ptr_StorageBuffer_uint %57 %uint_1 %75
 OpStore %76 %uint_4
@@ -7888,9 +7888,9 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_58 = OpTypePointer StorageBuffer %_struct_58
 %60 = OpVariable %_ptr_StorageBuffer__struct_58 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
+%uint_4 = OpConstant %uint 4
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
 %gl_FragCoord = OpVariable %_ptr_Input_v4float Input
@@ -7961,7 +7961,7 @@ OpFunctionEnd
 %56 = OpFunctionParameter %uint
 %57 = OpLabel
 %61 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_0
-%64 = OpAtomicIAdd %uint %61 %uint_4 %uint_0 %uint_10
+%64 = OpAtomicIAdd %uint %61 %uint_2 %uint_0 %uint_10
 %65 = OpIAdd %uint %64 %uint_10
 %66 = OpArrayLength %uint %60 1
 %67 = OpULessThanEqual %bool %65 %66
@@ -7974,9 +7974,9 @@ OpStore %71 %uint_10
 %73 = OpIAdd %uint %64 %uint_1
 %74 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %73
 OpStore %74 %uint_23
-%76 = OpIAdd %uint %64 %uint_2
-%77 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %76
-OpStore %77 %53
+%75 = OpIAdd %uint %64 %uint_2
+%76 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %75
+OpStore %76 %53
 %78 = OpIAdd %uint %64 %uint_3
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %60 %uint_1 %78
 OpStore %79 %uint_4
@@ -8137,8 +8137,8 @@ OpDecorate %gl_FragCoord BuiltIn FragCoord
 %_ptr_StorageBuffer__struct_54 = OpTypePointer StorageBuffer %_struct_54
 %56 = OpVariable %_ptr_StorageBuffer__struct_54 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_3 = OpConstant %uint 3
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
@@ -8216,46 +8216,46 @@ OpFunctionEnd
 %52 = OpFunctionParameter %uint
 %53 = OpLabel
 %57 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_0
-%59 = OpAtomicIAdd %uint %57 %uint_4 %uint_0 %uint_10
-%60 = OpIAdd %uint %59 %uint_10
-%61 = OpArrayLength %uint %56 1
-%62 = OpULessThanEqual %bool %60 %61
-OpSelectionMerge %63 None
-OpBranchConditional %62 %64 %63
-%64 = OpLabel
-%65 = OpIAdd %uint %59 %uint_0
-%66 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %65
-OpStore %66 %uint_10
-%68 = OpIAdd %uint %59 %uint_1
-%69 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %68
-OpStore %69 %uint_23
-%71 = OpIAdd %uint %59 %uint_2
+%60 = OpAtomicIAdd %uint %57 %uint_2 %uint_0 %uint_10
+%61 = OpIAdd %uint %60 %uint_10
+%62 = OpArrayLength %uint %56 1
+%63 = OpULessThanEqual %bool %61 %62
+OpSelectionMerge %64 None
+OpBranchConditional %63 %65 %64
+%65 = OpLabel
+%66 = OpIAdd %uint %60 %uint_0
+%67 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %66
+OpStore %67 %uint_10
+%69 = OpIAdd %uint %60 %uint_1
+%70 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %69
+OpStore %70 %uint_23
+%71 = OpIAdd %uint %60 %uint_2
 %72 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %71
 OpStore %72 %49
-%74 = OpIAdd %uint %59 %uint_3
+%74 = OpIAdd %uint %60 %uint_3
 %75 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %74
 OpStore %75 %uint_4
 %79 = OpLoad %v4float %gl_FragCoord
 %81 = OpBitcast %v4uint %79
 %82 = OpCompositeExtract %uint %81 0
-%83 = OpIAdd %uint %59 %uint_4
+%83 = OpIAdd %uint %60 %uint_4
 %84 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %83
 OpStore %84 %82
 %85 = OpCompositeExtract %uint %81 1
-%87 = OpIAdd %uint %59 %uint_5
+%87 = OpIAdd %uint %60 %uint_5
 %88 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %87
 OpStore %88 %85
-%90 = OpIAdd %uint %59 %uint_7
+%90 = OpIAdd %uint %60 %uint_7
 %91 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %90
 OpStore %91 %50
-%93 = OpIAdd %uint %59 %uint_8
+%93 = OpIAdd %uint %60 %uint_8
 %94 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %93
 OpStore %94 %51
-%96 = OpIAdd %uint %59 %uint_9
+%96 = OpIAdd %uint %60 %uint_9
 %97 = OpAccessChain %_ptr_StorageBuffer_uint %56 %uint_1 %96
 OpStore %97 %52
-OpBranch %63
-%63 = OpLabel
+OpBranch %64
+%64 = OpLabel
 OpReturn
 OpFunctionEnd
 %101 = OpFunction %uint None %102
@@ -8410,10 +8410,10 @@ OpDecorate %117 NonUniformEXT
 %41 = OpVariable %_ptr_StorageBuffer__struct_39 StorageBuffer
 %_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
+%uint_2 = OpConstant %uint 2
 %uint_1 = OpConstant %uint 1
 %uint_23 = OpConstant %uint 23
-%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
 %uint_3 = OpConstant %uint 3
 %v4float = OpTypeVector %float 4
 %_ptr_Input_v4float = OpTypePointer Input %v4float
@@ -8485,7 +8485,7 @@ OpFunctionEnd
 %36 = OpFunctionParameter %uint
 %37 = OpLabel
 %43 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_0
-%46 = OpAtomicIAdd %uint %43 %uint_4 %uint_0 %uint_10
+%46 = OpAtomicIAdd %uint %43 %uint_2 %uint_0 %uint_10
 %47 = OpIAdd %uint %46 %uint_10
 %48 = OpArrayLength %uint %41 1
 %49 = OpULessThanEqual %bool %47 %48
@@ -8498,9 +8498,9 @@ OpStore %54 %uint_10
 %56 = OpIAdd %uint %46 %uint_1
 %57 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %56
 OpStore %57 %uint_23
-%59 = OpIAdd %uint %46 %uint_2
-%60 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %59
-OpStore %60 %33
+%58 = OpIAdd %uint %46 %uint_2
+%59 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %58
+OpStore %59 %33
 %62 = OpIAdd %uint %46 %uint_3
 %63 = OpAccessChain %_ptr_StorageBuffer_uint %41 %uint_1 %62
 OpStore %63 %uint_4
@@ -8690,14 +8690,14 @@ OpDecorate %gl_GlobalInvocationID BuiltIn GlobalInvocationId
 %_ptr_StorageBuffer__struct_63 = OpTypePointer StorageBuffer %_struct_63
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_5 = OpConstant %uint 5
 %uint_3 = OpConstant %uint 3
 %v3uint = OpTypeVector %uint 3
 %_ptr_Input_v3uint = OpTypePointer Input %v3uint
 %gl_GlobalInvocationID = OpVariable %_ptr_Input_v3uint Input
+%uint_4 = OpConstant %uint 4
 %uint_6 = OpConstant %uint 6
 %uint_7 = OpConstant %uint 7
 %uint_8 = OpConstant %uint 8
@@ -8804,7 +8804,7 @@ OpFunctionEnd
 %61 = OpFunctionParameter %uint
 %62 = OpLabel
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%69 = OpAtomicIAdd %uint %66 %uint_4 %uint_0 %uint_10
+%69 = OpAtomicIAdd %uint %66 %uint_2 %uint_0 %uint_10
 %70 = OpIAdd %uint %69 %uint_10
 %71 = OpArrayLength %uint %65 1
 %72 = OpULessThanEqual %bool %70 %71
@@ -8817,25 +8817,25 @@ OpStore %76 %uint_10
 %78 = OpIAdd %uint %69 %uint_1
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %78
 OpStore %79 %uint_23
-%81 = OpIAdd %uint %69 %uint_2
-%82 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %81
-OpStore %82 %58
-%85 = OpIAdd %uint %69 %uint_3
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %85
-OpStore %86 %uint_5
-%90 = OpLoad %v3uint %gl_GlobalInvocationID
-%91 = OpCompositeExtract %uint %90 0
-%92 = OpCompositeExtract %uint %90 1
-%93 = OpCompositeExtract %uint %90 2
+%80 = OpIAdd %uint %69 %uint_2
+%81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
+OpStore %81 %58
+%84 = OpIAdd %uint %69 %uint_3
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %84
+OpStore %85 %uint_5
+%89 = OpLoad %v3uint %gl_GlobalInvocationID
+%90 = OpCompositeExtract %uint %89 0
+%91 = OpCompositeExtract %uint %89 1
+%92 = OpCompositeExtract %uint %89 2
 %94 = OpIAdd %uint %69 %uint_4
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %94
-OpStore %95 %91
+OpStore %95 %90
 %96 = OpIAdd %uint %69 %uint_5
 %97 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %96
-OpStore %97 %92
+OpStore %97 %91
 %99 = OpIAdd %uint %69 %uint_6
 %100 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %99
-OpStore %100 %93
+OpStore %100 %92
 %102 = OpIAdd %uint %69 %uint_7
 %103 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %102
 OpStore %103 %59
@@ -8930,7 +8930,7 @@ OpExtension "SPV_NV_ray_tracing"
 OpExtension "SPV_KHR_storage_buffer_storage_class"
 %1 = OpExtInstImport "GLSL.std.450"
 OpMemoryModel Logical GLSL450
-OpEntryPoint RayGenerationNV %main "main" %89
+OpEntryPoint RayGenerationNV %main "main" %88
 OpSource GLSL 460
 OpSourceExtension "GL_EXT_nonuniform_qualifier"
 OpSourceExtension "GL_NV_ray_tracing"
@@ -8958,7 +8958,7 @@ OpMemberDecorate %_struct_63 0 Offset 0
 OpMemberDecorate %_struct_63 1 Offset 4
 OpDecorate %65 DescriptorSet 7
 OpDecorate %65 Binding 0
-OpDecorate %89 BuiltIn LaunchIdNV
+OpDecorate %88 BuiltIn LaunchIdNV
 %void = OpTypeVoid
 )";
 
@@ -9031,14 +9031,14 @@ OpFunctionEnd
 %_ptr_StorageBuffer__struct_63 = OpTypePointer StorageBuffer %_struct_63
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_5313 = OpConstant %uint 5313
 %uint_3 = OpConstant %uint 3
 %v3uint = OpTypeVector %uint 3
 %_ptr_Input_v3uint = OpTypePointer Input %v3uint
-%89 = OpVariable %_ptr_Input_v3uint Input
+%88 = OpVariable %_ptr_Input_v3uint Input
+%uint_4 = OpConstant %uint 4
 %uint_5 = OpConstant %uint 5
 %uint_6 = OpConstant %uint 6
 %uint_7 = OpConstant %uint 7
@@ -9128,7 +9128,7 @@ OpFunctionEnd
 %61 = OpFunctionParameter %uint
 %62 = OpLabel
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%69 = OpAtomicIAdd %uint %66 %uint_4 %uint_0 %uint_10
+%69 = OpAtomicIAdd %uint %66 %uint_2 %uint_0 %uint_10
 %70 = OpIAdd %uint %69 %uint_10
 %71 = OpArrayLength %uint %65 1
 %72 = OpULessThanEqual %bool %70 %71
@@ -9141,25 +9141,25 @@ OpStore %76 %uint_10
 %78 = OpIAdd %uint %69 %uint_1
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %78
 OpStore %79 %uint_23
-%81 = OpIAdd %uint %69 %uint_2
-%82 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %81
-OpStore %82 %58
-%85 = OpIAdd %uint %69 %uint_3
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %85
-OpStore %86 %uint_5313
-%90 = OpLoad %v3uint %89
-%91 = OpCompositeExtract %uint %90 0
-%92 = OpCompositeExtract %uint %90 1
-%93 = OpCompositeExtract %uint %90 2
+%80 = OpIAdd %uint %69 %uint_2
+%81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
+OpStore %81 %58
+%84 = OpIAdd %uint %69 %uint_3
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %84
+OpStore %85 %uint_5313
+%89 = OpLoad %v3uint %88
+%90 = OpCompositeExtract %uint %89 0
+%91 = OpCompositeExtract %uint %89 1
+%92 = OpCompositeExtract %uint %89 2
 %94 = OpIAdd %uint %69 %uint_4
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %94
-OpStore %95 %91
+OpStore %95 %90
 %97 = OpIAdd %uint %69 %uint_5
 %98 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %97
-OpStore %98 %92
+OpStore %98 %91
 %100 = OpIAdd %uint %69 %uint_6
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %100
-OpStore %101 %93
+OpStore %101 %92
 %103 = OpIAdd %uint %69 %uint_7
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %103
 OpStore %104 %59
@@ -9254,7 +9254,7 @@ OpExtension "SPV_NV_ray_tracing"
 OpExtension "SPV_KHR_storage_buffer_storage_class"
 %1 = OpExtInstImport "GLSL.std.450"
 OpMemoryModel Logical GLSL450
-OpEntryPoint IntersectionNV %main "main" %89
+OpEntryPoint IntersectionNV %main "main" %88
 OpSource GLSL 460
 OpSourceExtension "GL_EXT_nonuniform_qualifier"
 OpSourceExtension "GL_NV_ray_tracing"
@@ -9282,7 +9282,7 @@ OpMemberDecorate %_struct_63 0 Offset 0
 OpMemberDecorate %_struct_63 1 Offset 4
 OpDecorate %65 DescriptorSet 7
 OpDecorate %65 Binding 0
-OpDecorate %89 BuiltIn LaunchIdNV
+OpDecorate %88 BuiltIn LaunchIdNV
 %void = OpTypeVoid
 )";
 
@@ -9355,14 +9355,14 @@ OpFunctionEnd
 %_ptr_StorageBuffer__struct_63 = OpTypePointer StorageBuffer %_struct_63
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_5314 = OpConstant %uint 5314
 %uint_3 = OpConstant %uint 3
 %v3uint = OpTypeVector %uint 3
 %_ptr_Input_v3uint = OpTypePointer Input %v3uint
-%89 = OpVariable %_ptr_Input_v3uint Input
+%88 = OpVariable %_ptr_Input_v3uint Input
+%uint_4 = OpConstant %uint 4
 %uint_5 = OpConstant %uint 5
 %uint_6 = OpConstant %uint 6
 %uint_7 = OpConstant %uint 7
@@ -9452,7 +9452,7 @@ OpFunctionEnd
 %61 = OpFunctionParameter %uint
 %62 = OpLabel
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%69 = OpAtomicIAdd %uint %66 %uint_4 %uint_0 %uint_10
+%69 = OpAtomicIAdd %uint %66 %uint_2 %uint_0 %uint_10
 %70 = OpIAdd %uint %69 %uint_10
 %71 = OpArrayLength %uint %65 1
 %72 = OpULessThanEqual %bool %70 %71
@@ -9465,25 +9465,25 @@ OpStore %76 %uint_10
 %78 = OpIAdd %uint %69 %uint_1
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %78
 OpStore %79 %uint_23
-%81 = OpIAdd %uint %69 %uint_2
-%82 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %81
-OpStore %82 %58
-%85 = OpIAdd %uint %69 %uint_3
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %85
-OpStore %86 %uint_5314
-%90 = OpLoad %v3uint %89
-%91 = OpCompositeExtract %uint %90 0
-%92 = OpCompositeExtract %uint %90 1
-%93 = OpCompositeExtract %uint %90 2
+%80 = OpIAdd %uint %69 %uint_2
+%81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
+OpStore %81 %58
+%84 = OpIAdd %uint %69 %uint_3
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %84
+OpStore %85 %uint_5314
+%89 = OpLoad %v3uint %88
+%90 = OpCompositeExtract %uint %89 0
+%91 = OpCompositeExtract %uint %89 1
+%92 = OpCompositeExtract %uint %89 2
 %94 = OpIAdd %uint %69 %uint_4
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %94
-OpStore %95 %91
+OpStore %95 %90
 %97 = OpIAdd %uint %69 %uint_5
 %98 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %97
-OpStore %98 %92
+OpStore %98 %91
 %100 = OpIAdd %uint %69 %uint_6
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %100
-OpStore %101 %93
+OpStore %101 %92
 %103 = OpIAdd %uint %69 %uint_7
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %103
 OpStore %104 %59
@@ -9578,7 +9578,7 @@ OpExtension "SPV_NV_ray_tracing"
 OpExtension "SPV_KHR_storage_buffer_storage_class"
 %1 = OpExtInstImport "GLSL.std.450"
 OpMemoryModel Logical GLSL450
-OpEntryPoint AnyHitNV %main "main" %89
+OpEntryPoint AnyHitNV %main "main" %88
 OpSource GLSL 460
 OpSourceExtension "GL_EXT_nonuniform_qualifier"
 OpSourceExtension "GL_NV_ray_tracing"
@@ -9606,7 +9606,7 @@ OpMemberDecorate %_struct_63 0 Offset 0
 OpMemberDecorate %_struct_63 1 Offset 4
 OpDecorate %65 DescriptorSet 7
 OpDecorate %65 Binding 0
-OpDecorate %89 BuiltIn LaunchIdNV
+OpDecorate %88 BuiltIn LaunchIdNV
 %void = OpTypeVoid
 )";
 
@@ -9679,14 +9679,14 @@ OpFunctionEnd
 %_ptr_StorageBuffer__struct_63 = OpTypePointer StorageBuffer %_struct_63
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_5315 = OpConstant %uint 5315
 %uint_3 = OpConstant %uint 3
 %v3uint = OpTypeVector %uint 3
 %_ptr_Input_v3uint = OpTypePointer Input %v3uint
-%89 = OpVariable %_ptr_Input_v3uint Input
+%88 = OpVariable %_ptr_Input_v3uint Input
+%uint_4 = OpConstant %uint 4
 %uint_5 = OpConstant %uint 5
 %uint_6 = OpConstant %uint 6
 %uint_7 = OpConstant %uint 7
@@ -9776,7 +9776,7 @@ OpFunctionEnd
 %61 = OpFunctionParameter %uint
 %62 = OpLabel
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%69 = OpAtomicIAdd %uint %66 %uint_4 %uint_0 %uint_10
+%69 = OpAtomicIAdd %uint %66 %uint_2 %uint_0 %uint_10
 %70 = OpIAdd %uint %69 %uint_10
 %71 = OpArrayLength %uint %65 1
 %72 = OpULessThanEqual %bool %70 %71
@@ -9789,25 +9789,25 @@ OpStore %76 %uint_10
 %78 = OpIAdd %uint %69 %uint_1
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %78
 OpStore %79 %uint_23
-%81 = OpIAdd %uint %69 %uint_2
-%82 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %81
-OpStore %82 %58
-%85 = OpIAdd %uint %69 %uint_3
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %85
-OpStore %86 %uint_5315
-%90 = OpLoad %v3uint %89
-%91 = OpCompositeExtract %uint %90 0
-%92 = OpCompositeExtract %uint %90 1
-%93 = OpCompositeExtract %uint %90 2
+%80 = OpIAdd %uint %69 %uint_2
+%81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
+OpStore %81 %58
+%84 = OpIAdd %uint %69 %uint_3
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %84
+OpStore %85 %uint_5315
+%89 = OpLoad %v3uint %88
+%90 = OpCompositeExtract %uint %89 0
+%91 = OpCompositeExtract %uint %89 1
+%92 = OpCompositeExtract %uint %89 2
 %94 = OpIAdd %uint %69 %uint_4
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %94
-OpStore %95 %91
+OpStore %95 %90
 %97 = OpIAdd %uint %69 %uint_5
 %98 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %97
-OpStore %98 %92
+OpStore %98 %91
 %100 = OpIAdd %uint %69 %uint_6
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %100
-OpStore %101 %93
+OpStore %101 %92
 %103 = OpIAdd %uint %69 %uint_7
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %103
 OpStore %104 %59
@@ -9902,7 +9902,7 @@ OpExtension "SPV_NV_ray_tracing"
 OpExtension "SPV_KHR_storage_buffer_storage_class"
 %1 = OpExtInstImport "GLSL.std.450"
 OpMemoryModel Logical GLSL450
-OpEntryPoint ClosestHitNV %main "main" %89
+OpEntryPoint ClosestHitNV %main "main" %88
 OpSource GLSL 460
 OpSourceExtension "GL_EXT_nonuniform_qualifier"
 OpSourceExtension "GL_NV_ray_tracing"
@@ -9930,7 +9930,7 @@ OpMemberDecorate %_struct_63 0 Offset 0
 OpMemberDecorate %_struct_63 1 Offset 4
 OpDecorate %65 DescriptorSet 7
 OpDecorate %65 Binding 0
-OpDecorate %89 BuiltIn LaunchIdNV
+OpDecorate %88 BuiltIn LaunchIdNV
 %void = OpTypeVoid
 )";
 
@@ -10003,14 +10003,14 @@ OpFunctionEnd
 %_ptr_StorageBuffer__struct_63 = OpTypePointer StorageBuffer %_struct_63
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_5316 = OpConstant %uint 5316
 %uint_3 = OpConstant %uint 3
 %v3uint = OpTypeVector %uint 3
 %_ptr_Input_v3uint = OpTypePointer Input %v3uint
-%89 = OpVariable %_ptr_Input_v3uint Input
+%88 = OpVariable %_ptr_Input_v3uint Input
+%uint_4 = OpConstant %uint 4
 %uint_5 = OpConstant %uint 5
 %uint_6 = OpConstant %uint 6
 %uint_7 = OpConstant %uint 7
@@ -10100,7 +10100,7 @@ OpFunctionEnd
 %61 = OpFunctionParameter %uint
 %62 = OpLabel
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%69 = OpAtomicIAdd %uint %66 %uint_4 %uint_0 %uint_10
+%69 = OpAtomicIAdd %uint %66 %uint_2 %uint_0 %uint_10
 %70 = OpIAdd %uint %69 %uint_10
 %71 = OpArrayLength %uint %65 1
 %72 = OpULessThanEqual %bool %70 %71
@@ -10113,25 +10113,25 @@ OpStore %76 %uint_10
 %78 = OpIAdd %uint %69 %uint_1
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %78
 OpStore %79 %uint_23
-%81 = OpIAdd %uint %69 %uint_2
-%82 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %81
-OpStore %82 %58
-%85 = OpIAdd %uint %69 %uint_3
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %85
-OpStore %86 %uint_5316
-%90 = OpLoad %v3uint %89
-%91 = OpCompositeExtract %uint %90 0
-%92 = OpCompositeExtract %uint %90 1
-%93 = OpCompositeExtract %uint %90 2
+%80 = OpIAdd %uint %69 %uint_2
+%81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
+OpStore %81 %58
+%84 = OpIAdd %uint %69 %uint_3
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %84
+OpStore %85 %uint_5316
+%89 = OpLoad %v3uint %88
+%90 = OpCompositeExtract %uint %89 0
+%91 = OpCompositeExtract %uint %89 1
+%92 = OpCompositeExtract %uint %89 2
 %94 = OpIAdd %uint %69 %uint_4
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %94
-OpStore %95 %91
+OpStore %95 %90
 %97 = OpIAdd %uint %69 %uint_5
 %98 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %97
-OpStore %98 %92
+OpStore %98 %91
 %100 = OpIAdd %uint %69 %uint_6
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %100
-OpStore %101 %93
+OpStore %101 %92
 %103 = OpIAdd %uint %69 %uint_7
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %103
 OpStore %104 %59
@@ -10226,7 +10226,7 @@ OpExtension "SPV_NV_ray_tracing"
 OpExtension "SPV_KHR_storage_buffer_storage_class"
 %1 = OpExtInstImport "GLSL.std.450"
 OpMemoryModel Logical GLSL450
-OpEntryPoint MissNV %main "main" %89
+OpEntryPoint MissNV %main "main" %88
 OpSource GLSL 460
 OpSourceExtension "GL_EXT_nonuniform_qualifier"
 OpSourceExtension "GL_NV_ray_tracing"
@@ -10254,7 +10254,7 @@ OpMemberDecorate %_struct_63 0 Offset 0
 OpMemberDecorate %_struct_63 1 Offset 4
 OpDecorate %65 DescriptorSet 7
 OpDecorate %65 Binding 0
-OpDecorate %89 BuiltIn LaunchIdNV
+OpDecorate %88 BuiltIn LaunchIdNV
 %void = OpTypeVoid
 )";
 
@@ -10327,14 +10327,14 @@ OpFunctionEnd
 %_ptr_StorageBuffer__struct_63 = OpTypePointer StorageBuffer %_struct_63
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_5317 = OpConstant %uint 5317
 %uint_3 = OpConstant %uint 3
 %v3uint = OpTypeVector %uint 3
 %_ptr_Input_v3uint = OpTypePointer Input %v3uint
-%89 = OpVariable %_ptr_Input_v3uint Input
+%88 = OpVariable %_ptr_Input_v3uint Input
+%uint_4 = OpConstant %uint 4
 %uint_5 = OpConstant %uint 5
 %uint_6 = OpConstant %uint 6
 %uint_7 = OpConstant %uint 7
@@ -10424,7 +10424,7 @@ OpFunctionEnd
 %61 = OpFunctionParameter %uint
 %62 = OpLabel
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%69 = OpAtomicIAdd %uint %66 %uint_4 %uint_0 %uint_10
+%69 = OpAtomicIAdd %uint %66 %uint_2 %uint_0 %uint_10
 %70 = OpIAdd %uint %69 %uint_10
 %71 = OpArrayLength %uint %65 1
 %72 = OpULessThanEqual %bool %70 %71
@@ -10437,25 +10437,25 @@ OpStore %76 %uint_10
 %78 = OpIAdd %uint %69 %uint_1
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %78
 OpStore %79 %uint_23
-%81 = OpIAdd %uint %69 %uint_2
-%82 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %81
-OpStore %82 %58
-%85 = OpIAdd %uint %69 %uint_3
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %85
-OpStore %86 %uint_5317
-%90 = OpLoad %v3uint %89
-%91 = OpCompositeExtract %uint %90 0
-%92 = OpCompositeExtract %uint %90 1
-%93 = OpCompositeExtract %uint %90 2
+%80 = OpIAdd %uint %69 %uint_2
+%81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
+OpStore %81 %58
+%84 = OpIAdd %uint %69 %uint_3
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %84
+OpStore %85 %uint_5317
+%89 = OpLoad %v3uint %88
+%90 = OpCompositeExtract %uint %89 0
+%91 = OpCompositeExtract %uint %89 1
+%92 = OpCompositeExtract %uint %89 2
 %94 = OpIAdd %uint %69 %uint_4
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %94
-OpStore %95 %91
+OpStore %95 %90
 %97 = OpIAdd %uint %69 %uint_5
 %98 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %97
-OpStore %98 %92
+OpStore %98 %91
 %100 = OpIAdd %uint %69 %uint_6
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %100
-OpStore %101 %93
+OpStore %101 %92
 %103 = OpIAdd %uint %69 %uint_7
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %103
 OpStore %104 %59
@@ -10550,7 +10550,7 @@ OpExtension "SPV_NV_ray_tracing"
 OpExtension "SPV_KHR_storage_buffer_storage_class"
 %1 = OpExtInstImport "GLSL.std.450"
 OpMemoryModel Logical GLSL450
-OpEntryPoint CallableNV %main "main" %89
+OpEntryPoint CallableNV %main "main" %88
 OpSource GLSL 460
 OpSourceExtension "GL_EXT_nonuniform_qualifier"
 OpSourceExtension "GL_NV_ray_tracing"
@@ -10578,7 +10578,7 @@ OpMemberDecorate %_struct_63 0 Offset 0
 OpMemberDecorate %_struct_63 1 Offset 4
 OpDecorate %65 DescriptorSet 7
 OpDecorate %65 Binding 0
-OpDecorate %89 BuiltIn LaunchIdNV
+OpDecorate %88 BuiltIn LaunchIdNV
 %void = OpTypeVoid
 )";
 
@@ -10651,14 +10651,14 @@ OpFunctionEnd
 %_ptr_StorageBuffer__struct_63 = OpTypePointer StorageBuffer %_struct_63
 %65 = OpVariable %_ptr_StorageBuffer__struct_63 StorageBuffer
 %uint_10 = OpConstant %uint 10
-%uint_4 = OpConstant %uint 4
-%uint_23 = OpConstant %uint 23
 %uint_2 = OpConstant %uint 2
+%uint_23 = OpConstant %uint 23
 %uint_5318 = OpConstant %uint 5318
 %uint_3 = OpConstant %uint 3
 %v3uint = OpTypeVector %uint 3
 %_ptr_Input_v3uint = OpTypePointer Input %v3uint
-%89 = OpVariable %_ptr_Input_v3uint Input
+%88 = OpVariable %_ptr_Input_v3uint Input
+%uint_4 = OpConstant %uint 4
 %uint_5 = OpConstant %uint 5
 %uint_6 = OpConstant %uint 6
 %uint_7 = OpConstant %uint 7
@@ -10748,7 +10748,7 @@ OpFunctionEnd
 %61 = OpFunctionParameter %uint
 %62 = OpLabel
 %66 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_0
-%69 = OpAtomicIAdd %uint %66 %uint_4 %uint_0 %uint_10
+%69 = OpAtomicIAdd %uint %66 %uint_2 %uint_0 %uint_10
 %70 = OpIAdd %uint %69 %uint_10
 %71 = OpArrayLength %uint %65 1
 %72 = OpULessThanEqual %bool %70 %71
@@ -10761,25 +10761,25 @@ OpStore %76 %uint_10
 %78 = OpIAdd %uint %69 %uint_1
 %79 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %78
 OpStore %79 %uint_23
-%81 = OpIAdd %uint %69 %uint_2
-%82 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %81
-OpStore %82 %58
-%85 = OpIAdd %uint %69 %uint_3
-%86 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %85
-OpStore %86 %uint_5318
-%90 = OpLoad %v3uint %89
-%91 = OpCompositeExtract %uint %90 0
-%92 = OpCompositeExtract %uint %90 1
-%93 = OpCompositeExtract %uint %90 2
+%80 = OpIAdd %uint %69 %uint_2
+%81 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %80
+OpStore %81 %58
+%84 = OpIAdd %uint %69 %uint_3
+%85 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %84
+OpStore %85 %uint_5318
+%89 = OpLoad %v3uint %88
+%90 = OpCompositeExtract %uint %89 0
+%91 = OpCompositeExtract %uint %89 1
+%92 = OpCompositeExtract %uint %89 2
 %94 = OpIAdd %uint %69 %uint_4
 %95 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %94
-OpStore %95 %91
+OpStore %95 %90
 %97 = OpIAdd %uint %69 %uint_5
 %98 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %97
-OpStore %98 %92
+OpStore %98 %91
 %100 = OpIAdd %uint %69 %uint_6
 %101 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %100
-OpStore %101 %93
+OpStore %101 %92
 %103 = OpIAdd %uint %69 %uint_7
 %104 = OpAccessChain %_ptr_StorageBuffer_uint %65 %uint_1 %103
 OpStore %104 %59

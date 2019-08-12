@@ -1913,6 +1913,18 @@ OpExtension "SPV_KHR_vulkan_memory_model"
   EXPECT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_UNIVERSAL_1_3));
 }
 
+TEST_F(ValidateAtomics, VulkanInvocationMemoryScopeBad) {
+  const std::string body = R"(
+%val1 = OpAtomicLoad %u32 %u32_var %invocation %relaxed
+)";
+
+  CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+  EXPECT_THAT(
+      getDiagnosticString(),
+      HasSubstr("in Vulkan environment, Memory Scope cannot be Invocation"));
+}
+
 TEST_F(ValidateAtomics, WebGPUCrossDeviceMemoryScopeBad) {
   const std::string body = R"(
 %val1 = OpAtomicLoad %u32 %u32_var %cross_device %relaxed
