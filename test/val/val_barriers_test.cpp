@@ -1548,6 +1548,80 @@ OpFunctionEnd
                         "CooperativeMatrixNV capability is present"));
 }
 
+TEST_F(ValidateBarriers, MemoryBarrierInvocationMemoryScopeBad) {
+  const std::string spirv = R"(
+OpCapability Shader
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+%void = OpTypeVoid
+%int = OpTypeInt 32 0
+%acquire = OpConstant %int 2
+%invocation = OpConstant %int 4
+%void_fn = OpTypeFunction %void
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+OpMemoryBarrier %invocation %acquire
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(spirv, SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the Vulkan environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
+TEST_F(ValidateBarriers, ControlBarrierInvocationMemoryScopeGood) {
+  const std::string spirv = R"(
+OpCapability Shader
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+%void = OpTypeVoid
+%int = OpTypeInt 32 0
+%relaxed = OpConstant %int 0
+%invocation = OpConstant %int 4
+%workgroup = OpConstant %int 2
+%void_fn = OpTypeFunction %void
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+OpControlBarrier %workgroup %invocation %relaxed
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(spirv, SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+}
+
+TEST_F(ValidateBarriers, ControlBarrierInvocationMemoryScopeBad) {
+  const std::string spirv = R"(
+OpCapability Shader
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+%void = OpTypeVoid
+%int = OpTypeInt 32 0
+%acquire = OpConstant %int 2
+%invocation = OpConstant %int 4
+%workgroup = OpConstant %int 2
+%void_fn = OpTypeFunction %void
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+OpControlBarrier %workgroup %invocation %acquire
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(spirv, SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the Vulkan environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
 }  // namespace
 }  // namespace val
 }  // namespace spvtools

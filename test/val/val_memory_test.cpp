@@ -4386,6 +4386,150 @@ OpFunctionEnd
                 "typed as OpTypeStruct, or an array of this type"));
 }
 
+TEST_F(ValidateMemory, MakeAvailableInvocationScopeBad) {
+  const std::string spirv = R"(
+OpCapability Shader
+OpCapability VulkanMemoryModelKHR
+OpExtension "SPV_KHR_vulkan_memory_model"
+OpMemoryModel Logical VulkanKHR
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+OpDecorate %var DescriptorSet 0
+OpDecorate %var Binding 0
+OpDecorate %struct Block
+OpMemberDecorate %struct 0 Offset 0
+%void = OpTypeVoid
+%int = OpTypeInt 32 0
+%int_0 = OpConstant %int 0
+%invocation = OpConstant %int 4
+%struct = OpTypeStruct %int
+%ptr_struct = OpTypePointer StorageBuffer %struct
+%ptr_int = OpTypePointer StorageBuffer %int
+%var = OpVariable %ptr_struct StorageBuffer
+%void_fn = OpTypeFunction %void
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+%gep = OpAccessChain %ptr_int %var %int_0
+OpStore %gep %int_0 MakePointerAvailableKHR|NonPrivatePointerKHR %invocation
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(spirv, SPV_ENV_VULKAN_1_1);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_1));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the Vulkan environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
+TEST_F(ValidateMemory, MakeVisibleInvocationScopeBad) {
+  const std::string spirv = R"(
+OpCapability Shader
+OpCapability VulkanMemoryModelKHR
+OpExtension "SPV_KHR_vulkan_memory_model"
+OpMemoryModel Logical VulkanKHR
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+OpDecorate %var DescriptorSet 0
+OpDecorate %var Binding 0
+OpDecorate %struct Block
+OpMemberDecorate %struct 0 Offset 0
+%void = OpTypeVoid
+%int = OpTypeInt 32 0
+%int_0 = OpConstant %int 0
+%invocation = OpConstant %int 4
+%struct = OpTypeStruct %int
+%ptr_struct = OpTypePointer StorageBuffer %struct
+%ptr_int = OpTypePointer StorageBuffer %int
+%var = OpVariable %ptr_struct StorageBuffer
+%void_fn = OpTypeFunction %void
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+%gep = OpAccessChain %ptr_int %var %int_0
+%ld = OpLoad %int %gep MakePointerVisibleKHR|NonPrivatePointerKHR %invocation
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(spirv, SPV_ENV_VULKAN_1_1);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_1));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the Vulkan environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
+TEST_F(ValidateMemory, MakeAvailableInvocationScopeBadWebGPU) {
+  const std::string spirv = R"(
+OpCapability Shader
+OpCapability VulkanMemoryModelKHR
+OpExtension "SPV_KHR_vulkan_memory_model"
+OpMemoryModel Logical VulkanKHR
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+OpDecorate %var DescriptorSet 0
+OpDecorate %var Binding 0
+OpDecorate %struct Block
+OpMemberDecorate %struct 0 Offset 0
+%void = OpTypeVoid
+%int = OpTypeInt 32 0
+%int_0 = OpConstant %int 0
+%invocation = OpConstant %int 4
+%struct = OpTypeStruct %int
+%ptr_struct = OpTypePointer StorageBuffer %struct
+%ptr_int = OpTypePointer StorageBuffer %int
+%var = OpVariable %ptr_struct StorageBuffer
+%void_fn = OpTypeFunction %void
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+%gep = OpAccessChain %ptr_int %var %int_0
+OpStore %gep %int_0 MakePointerAvailableKHR|NonPrivatePointerKHR %invocation
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(spirv, SPV_ENV_WEBGPU_0);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_WEBGPU_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the WebGPU environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
+TEST_F(ValidateMemory, MakeVisibleInvocationScopeBadWebGPU) {
+  const std::string spirv = R"(
+OpCapability Shader
+OpCapability VulkanMemoryModelKHR
+OpExtension "SPV_KHR_vulkan_memory_model"
+OpMemoryModel Logical VulkanKHR
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+OpDecorate %var DescriptorSet 0
+OpDecorate %var Binding 0
+OpDecorate %struct Block
+OpMemberDecorate %struct 0 Offset 0
+%void = OpTypeVoid
+%int = OpTypeInt 32 0
+%int_0 = OpConstant %int 0
+%invocation = OpConstant %int 4
+%struct = OpTypeStruct %int
+%ptr_struct = OpTypePointer StorageBuffer %struct
+%ptr_int = OpTypePointer StorageBuffer %int
+%var = OpVariable %ptr_struct StorageBuffer
+%void_fn = OpTypeFunction %void
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+%gep = OpAccessChain %ptr_int %var %int_0
+%ld = OpLoad %int %gep MakePointerVisibleKHR|NonPrivatePointerKHR %invocation
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(spirv, SPV_ENV_WEBGPU_0);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_WEBGPU_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the WebGPU environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
 }  // namespace
 }  // namespace val
 }  // namespace spvtools

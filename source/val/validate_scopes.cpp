@@ -146,7 +146,7 @@ spv_result_t ValidateExecutionScope(ValidationState_t& _,
 }
 
 spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
-                                 uint32_t scope) {
+                                 uint32_t scope, uint32_t semantics_index) {
   const SpvOp opcode = inst->opcode();
   bool is_int32 = false, is_const_int32 = false;
   uint32_t value = 0;
@@ -199,6 +199,16 @@ spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
            << "VulkanMemoryModelDeviceScopeKHR capability";
   }
 
+  bool semantics_int32 = true;
+  bool semantics_const = true;
+  // This is intentionally a bad value.
+  uint32_t semantics_value = 1;
+  if (semantics_index < inst->operands().size()) {
+    const auto semantics = inst->GetOperandAs<uint32_t>(semantics_index);
+    std::tie(semantics_int32, semantics_const, semantics_value) =
+        _.EvalInt32IfConst(semantics);
+  }
+
   // Vulkan Specific rules
   if (spvIsVulkanEnv(_.context()->target_env)) {
     if (value == SpvScopeCrossDevice) {
@@ -206,6 +216,13 @@ spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
              << spvOpcodeString(opcode)
              << ": in Vulkan environment, Memory Scope cannot be CrossDevice";
     }
+
+    if (semantics_const && semantics_value != 0 && value == SpvScopeInvocation) {
+      return _.diag(SPV_ERROR_INVALID_DATA, inst)
+             << "In the Vulkan environment, Invocation memory scope can only "
+                "be used if Memory Semantics are Relaxed";
+    }
+
     // Vulkan 1.0 specifc rules
     if (_.context()->target_env == SPV_ENV_VULKAN_1_0 &&
         value != SpvScopeDevice && value != SpvScopeWorkgroup &&
@@ -253,6 +270,13 @@ spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
                    << ": in WebGPU environment Memory Scope is limited to "
                    << "QueueFamilyKHR for OpAtomic* operations";
           }
+        }
+
+        if (semantics_const && semantics_value != 0 &&
+            value == SpvScopeInvocation) {
+          return _.diag(SPV_ERROR_INVALID_DATA, inst)
+                 << "In the WebGPU environment, Invocation memory scope can "
+                    "only be used if Memory Semantics are Relaxed";
         }
 
         if (value != SpvScopeWorkgroup && value != SpvScopeInvocation &&

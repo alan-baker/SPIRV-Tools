@@ -60,16 +60,18 @@ spv_result_t BarriersPass(ValidationState_t& _, const Instruction* inst) {
 
       const uint32_t execution_scope = inst->word(1);
       const uint32_t memory_scope = inst->word(2);
+      const uint32_t semantics_index = 2;
 
       if (auto error = ValidateExecutionScope(_, inst, execution_scope)) {
         return error;
       }
 
-      if (auto error = ValidateMemoryScope(_, inst, memory_scope)) {
+      if (auto error =
+              ValidateMemoryScope(_, inst, memory_scope, semantics_index)) {
         return error;
       }
 
-      if (auto error = ValidateMemorySemantics(_, inst, 2)) {
+      if (auto error = ValidateMemorySemantics(_, inst, semantics_index)) {
         return error;
       }
       break;
@@ -77,12 +79,14 @@ spv_result_t BarriersPass(ValidationState_t& _, const Instruction* inst) {
 
     case SpvOpMemoryBarrier: {
       const uint32_t memory_scope = inst->word(1);
+      const uint32_t semantics_index = 1;
 
-      if (auto error = ValidateMemoryScope(_, inst, memory_scope)) {
+      if (auto error =
+              ValidateMemoryScope(_, inst, memory_scope, semantics_index)) {
         return error;
       }
 
-      if (auto error = ValidateMemorySemantics(_, inst, 1)) {
+      if (auto error = ValidateMemorySemantics(_, inst, semantics_index)) {
         return error;
       }
       break;
@@ -114,12 +118,14 @@ spv_result_t BarriersPass(ValidationState_t& _, const Instruction* inst) {
       }
 
       const uint32_t memory_scope = inst->word(2);
+      const uint32_t semantics_index = 2;
 
-      if (auto error = ValidateMemoryScope(_, inst, memory_scope)) {
+      if (auto error =
+              ValidateMemoryScope(_, inst, memory_scope, semantics_index)) {
         return error;
       }
 
-      if (auto error = ValidateMemorySemantics(_, inst, 2)) {
+      if (auto error = ValidateMemorySemantics(_, inst, semantics_index)) {
         return error;
       }
       break;
