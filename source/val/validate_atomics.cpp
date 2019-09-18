@@ -203,11 +203,11 @@ spv_result_t AtomicsPass(ValidationState_t& _, const Instruction* inst) {
       }
 
       auto memory_scope = inst->GetOperandAs<const uint32_t>(operand_index++);
-      const auto equal_semantics_index = operand_index++;
-      if (auto error = ValidateMemoryScope(_, inst, memory_scope, equal_semantics_index)) {
+      if (auto error = ValidateMemoryScope(_, inst, memory_scope)) {
         return error;
       }
 
+      const auto equal_semantics_index = operand_index++;
       if (auto error = ValidateMemorySemantics(_, inst, equal_semantics_index))
         return error;
 

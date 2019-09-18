@@ -146,7 +146,7 @@ spv_result_t ValidateExecutionScope(ValidationState_t& _,
 }
 
 spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
-                                 uint32_t scope, uint32_t semantics_index) {
+                                 uint32_t scope) {
   const SpvOp opcode = inst->opcode();
   bool is_int32 = false, is_const_int32 = false;
   uint32_t value = 0;
@@ -199,16 +199,6 @@ spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
            << "VulkanMemoryModelDeviceScopeKHR capability";
   }
 
-  bool semantics_int32 = true;
-  bool semantics_const = true;
-  // This is intentionally a bad value.
-  uint32_t semantics_value = 1;
-  if (semantics_index < inst->operands().size()) {
-    const auto semantics = inst->GetOperandAs<uint32_t>(semantics_index);
-    std::tie(semantics_int32, semantics_const, semantics_value) =
-        _.EvalInt32IfConst(semantics);
-  }
-
   // Vulkan Specific rules
   if (spvIsVulkanEnv(_.context()->target_env)) {
     if (value == SpvScopeCrossDevice) {
@@ -217,10 +207,44 @@ spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
              << ": in Vulkan environment, Memory Scope cannot be CrossDevice";
     }
 
-    if (semantics_const && semantics_value != 0 && value == SpvScopeInvocation) {
+    if (spvOpcodeIsAtomicOp(inst->opcode()) ||
+        inst->opcode() == SpvOpControlBarrier ||
+        inst->opcode() == SpvOpMemoryBarrier) {
+      uint32_t semantics_index = 0;
+      switch (inst->opcode()) {
+        case SpvOpControlBarrier:
+          semantics_index = 2;
+          break;
+        case SpvOpMemoryBarrier:
+          semantics_index = 1;
+          break;
+        case SpvOpAtomicStore:
+          semantics_index = 2;
+          break;
+        default:
+          // For compare exchanges we only consider equal semantics.
+          semantics_index = 4;
+          break;
+      }
+      bool semantics_int32 = false;
+      bool semantics_const = false;
+      // This is intentionally a bad value.
+      uint32_t semantics_value = 0;
+      const auto semantics = inst->GetOperandAs<uint32_t>(semantics_index);
+      std::tie(semantics_int32, semantics_const, semantics_value) =
+          _.EvalInt32IfConst(semantics);
+
+      if (semantics_const && semantics_value != 0 &&
+          value == SpvScopeInvocation) {
+        return _.diag(SPV_ERROR_INVALID_DATA, inst)
+               << "In the Vulkan environment, Invocation memory scope can only "
+                  "be used if Memory Semantics are Relaxed";
+      }
+    } else if (value == SpvScopeInvocation) {
       return _.diag(SPV_ERROR_INVALID_DATA, inst)
-             << "In the Vulkan environment, Invocation memory scope can only "
-                "be used if Memory Semantics are Relaxed";
+             << spvOpcodeString(opcode)
+             << ": in the Vulkan environment, Memory Scope cannot be "
+                "Invocation";
     }
 
     // Vulkan 1.0 specifc rules
@@ -272,19 +296,11 @@ spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
           }
         }
 
-        if (semantics_const && semantics_value != 0 &&
-            value == SpvScopeInvocation) {
-          return _.diag(SPV_ERROR_INVALID_DATA, inst)
-                 << "In the WebGPU environment, Invocation memory scope can "
-                    "only be used if Memory Semantics are Relaxed";
-        }
-
-        if (value != SpvScopeWorkgroup && value != SpvScopeInvocation &&
-            value != SpvScopeQueueFamilyKHR) {
+        if (value != SpvScopeWorkgroup && value != SpvScopeQueueFamilyKHR) {
           return _.diag(SPV_ERROR_INVALID_DATA, inst)
                  << spvOpcodeString(opcode)
                  << ": in WebGPU environment Memory Scope is limited to "
-                 << "Workgroup, Invocation, and QueueFamilyKHR";
+                 << "Workgroup and QueueFamilyKHR";
         }
         break;
     }

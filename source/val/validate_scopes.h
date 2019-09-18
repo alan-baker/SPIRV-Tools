@@ -23,8 +23,9 @@ namespace val {
 spv_result_t ValidateExecutionScope(ValidationState_t& _,
                                     const Instruction* inst, uint32_t scope);
 
+// Validate memory scope.
 spv_result_t ValidateMemoryScope(ValidationState_t& _, const Instruction* inst,
-                                 uint32_t scope, uint32_t semantics_index);
+                                 uint32_t scope);
 
 }  // namespace val
 }  // namespace spvtools

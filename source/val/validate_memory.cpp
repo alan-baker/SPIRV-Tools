@@ -338,9 +338,7 @@ spv_result_t CheckMemoryAccess(ValidationState_t& _, const Instruction* inst,
 
     // Check the associated scope for MakeAvailableKHR.
     const auto available_scope = GetMakeAvailableScope(inst, mask, index);
-    if (auto error =
-            ValidateMemoryScope(_, inst, available_scope,
-                                static_cast<uint32_t>(inst->operands().size())))
+    if (auto error = ValidateMemoryScope(_, inst, available_scope))
       return error;
   }
 
@@ -359,10 +357,7 @@ spv_result_t CheckMemoryAccess(ValidationState_t& _, const Instruction* inst,
 
     // Check the associated scope for MakeVisibleKHR.
     const auto visible_scope = GetMakeVisibleScope(inst, mask, index);
-    if (auto error =
-            ValidateMemoryScope(_, inst, visible_scope,
-                                static_cast<uint32_t>(inst->operands().size())))
-      return error;
+    if (auto error = ValidateMemoryScope(_, inst, visible_scope)) return error;
   }
 
   if (mask & SpvMemoryAccessNonPrivatePointerKHRMask) {

@@ -2005,6 +2005,48 @@ TEST_F(ValidateAtomics, CompareExchangeWeakV14Bad) {
           "AtomicCompareExchangeWeak requires SPIR-V version 1.3 or earlier"));
 }
 
+TEST_F(ValidateAtomics, InvocationMemoryScopeAtomicLoadGood) {
+  const std::string body = R"(
+%val1 = OpAtomicLoad %u32 %u32_var %invocation %relaxed
+)";
+
+  CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+}
+
+TEST_F(ValidateAtomics, InvocationMemoryScopeAtomicLoadBad) {
+  const std::string body = R"(
+%val1 = OpAtomicLoad %u32 %u32_var %invocation %acquire
+)";
+
+  CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the Vulkan environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
+TEST_F(ValidateAtomics, InvocationMemoryScopeAtomicStoreGood) {
+  const std::string body = R"(
+OpAtomicStore %u32_var %invocation %relaxed %u32_0
+)";
+
+  CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+}
+
+TEST_F(ValidateAtomics, InvocationMemoryScopeAtomicStoreBad) {
+  const std::string body = R"(
+OpAtomicStore %u32_var %invocation %release %u32_0
+)";
+
+  CompileSuccessfully(GenerateShaderCode(body), SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+  EXPECT_THAT(getDiagnosticString(),
+              HasSubstr("In the Vulkan environment, Invocation memory scope "
+                        "can only be used if Memory Semantics are Relaxed"));
+}
+
 TEST_F(ValidateAtomics, CompareExchangeVolatileMatch) {
   const std::string spirv = R"(
 OpCapability Shader

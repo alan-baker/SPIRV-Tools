@@ -4462,6 +4462,27 @@ OpExtension "SPV_KHR_vulkan_memory_model"
   ASSERT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_UNIVERSAL_1_3));
 }
 
+TEST_F(ValidateImage, MakeTexelVisibleKHRInvocationScopeImageRead) {
+  const std::string body = R"(
+%img = OpLoad %type_image_u32_2d_0000 %uniform_image_u32_2d_0000
+%res1 = OpImageRead %u32vec4 %img %u32vec2_01 MakeTexelVisibleKHR|NonPrivateTexelKHR %u32_4
+)";
+
+  const std::string extra = R"(
+OpCapability StorageImageReadWithoutFormat
+OpCapability VulkanMemoryModelKHR
+OpExtension "SPV_KHR_vulkan_memory_model"
+)";
+  CompileSuccessfully(GenerateShaderCode(body, extra, "Fragment", "",
+                                         SPV_ENV_VULKAN_1_1, "VulkanKHR")
+                          .c_str());
+  ASSERT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_1));
+  EXPECT_THAT(
+      getDiagnosticString(),
+      HasSubstr(
+          ": in the Vulkan environment, Memory Scope cannot be Invocation"));
+}
+
 TEST_F(ValidateImage, MakeTexelVisibleKHRSuccessImageSparseRead) {
   const std::string body = R"(
 %img = OpLoad %type_image_f32_2d_0002 %uniform_image_f32_2d_0002
@@ -4539,6 +4560,27 @@ OpExtension "SPV_KHR_vulkan_memory_model"
                                          SPV_ENV_UNIVERSAL_1_3, "VulkanKHR")
                           .c_str());
   ASSERT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_UNIVERSAL_1_3));
+}
+
+TEST_F(ValidateImage, MakeTexelAvailableKHRInvocationScopeImageWrite) {
+  const std::string body = R"(
+%img = OpLoad %type_image_u32_2d_0000 %uniform_image_u32_2d_0000
+OpImageWrite %img %u32vec2_01 %u32vec4_0123 MakeTexelAvailableKHR|NonPrivateTexelKHR %u32_4
+)";
+
+  const std::string extra = R"(
+OpCapability StorageImageWriteWithoutFormat
+OpCapability VulkanMemoryModelKHR
+OpExtension "SPV_KHR_vulkan_memory_model"
+)";
+  CompileSuccessfully(GenerateShaderCode(body, extra, "Fragment", "",
+                                         SPV_ENV_VULKAN_1_1, "VulkanKHR")
+                          .c_str());
+  ASSERT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_1));
+  EXPECT_THAT(
+      getDiagnosticString(),
+      HasSubstr(
+          ": in the Vulkan environment, Memory Scope cannot be Invocation"));
 }
 
 TEST_F(ValidateImage, MakeTexelAvailableKHRFailureOpcode) {

@@ -4417,9 +4417,10 @@ OpFunctionEnd
 
   CompileSuccessfully(spirv, SPV_ENV_VULKAN_1_1);
   EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_1));
-  EXPECT_THAT(getDiagnosticString(),
-              HasSubstr("In the Vulkan environment, Invocation memory scope "
-                        "can only be used if Memory Semantics are Relaxed"));
+  EXPECT_THAT(
+      getDiagnosticString(),
+      HasSubstr(
+          ": in the Vulkan environment, Memory Scope cannot be Invocation"));
 }
 
 TEST_F(ValidateMemory, MakeVisibleInvocationScopeBad) {
@@ -4453,9 +4454,10 @@ OpFunctionEnd
 
   CompileSuccessfully(spirv, SPV_ENV_VULKAN_1_1);
   EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_VULKAN_1_1));
-  EXPECT_THAT(getDiagnosticString(),
-              HasSubstr("In the Vulkan environment, Invocation memory scope "
-                        "can only be used if Memory Semantics are Relaxed"));
+  EXPECT_THAT(
+      getDiagnosticString(),
+      HasSubstr(
+          ": in the Vulkan environment, Memory Scope cannot be Invocation"));
 }
 
 TEST_F(ValidateMemory, MakeAvailableInvocationScopeBadWebGPU) {
@@ -4490,8 +4492,8 @@ OpFunctionEnd
   CompileSuccessfully(spirv, SPV_ENV_WEBGPU_0);
   EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_WEBGPU_0));
   EXPECT_THAT(getDiagnosticString(),
-              HasSubstr("In the WebGPU environment, Invocation memory scope "
-                        "can only be used if Memory Semantics are Relaxed"));
+              HasSubstr(": in WebGPU environment Memory Scope is limited to "
+                        "Workgroup and QueueFamilyKHR"));
 }
 
 TEST_F(ValidateMemory, MakeVisibleInvocationScopeBadWebGPU) {
@@ -4526,8 +4528,8 @@ OpFunctionEnd
   CompileSuccessfully(spirv, SPV_ENV_WEBGPU_0);
   EXPECT_EQ(SPV_ERROR_INVALID_DATA, ValidateInstructions(SPV_ENV_WEBGPU_0));
   EXPECT_THAT(getDiagnosticString(),
-              HasSubstr("In the WebGPU environment, Invocation memory scope "
-                        "can only be used if Memory Semantics are Relaxed"));
+              HasSubstr(": in WebGPU environment Memory Scope is limited to "
+                        "Workgroup and QueueFamilyKHR"));
 }
 
 }  // namespace
