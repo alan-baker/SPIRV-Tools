@@ -24,3 +24,6 @@ deps = {
           Var('spirv_headers_revision'),
 }
 
+recursedeps = [
+  './buildtools',
+]
