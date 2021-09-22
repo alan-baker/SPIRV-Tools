@@ -4,7 +4,7 @@
 solutions = [
   { "name"        : ".",
     "url"         : "https://github.com/KhronosGroup/SPIRV-Tools",
-    "deps_file"   : "GN_DEPS",
+    "deps_file"   : "gn_files/DEPS",
     "managed"     : False,
     "custom_deps": {
     },
