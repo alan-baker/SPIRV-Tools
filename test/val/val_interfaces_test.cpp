@@ -812,6 +812,35 @@ OpFunctionEnd
                         "at location 1"));
 }
 
+TEST_F(ValidateInterfacesTest, VulkanLocationsDoubleVector2Good) {
+  const std::string text = R"(
+OpCapability Shader
+OpCapability Float64
+OpMemoryModel Logical GLSL450
+OpEntryPoint Fragment %main "main" %var1 %var2
+OpExecutionMode %main OriginUpperLeft
+OpDecorate %var1 Location 0
+OpDecorate %var2 Location 2
+%void = OpTypeVoid
+%void_fn = OpTypeFunction %void
+%float = OpTypeFloat 32
+%double = OpTypeFloat 64
+%vector = OpTypeVector %double 2
+%struct = OpTypeStruct %vector %vector
+%ptr_input_float = OpTypePointer Input %float
+%ptr_input_struct = OpTypePointer Input %struct
+%var1 = OpVariable %ptr_input_struct Input
+%var2 = OpVariable %ptr_input_float Input
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(text, SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_VULKAN_1_0));
+}
+
 TEST_F(ValidateInterfacesTest, VulkanLocationsMatrix2x2Conflict) {
   const std::string text = R"(
 OpCapability Shader
@@ -820,6 +849,7 @@ OpEntryPoint Fragment %main "main" %var1 %var2
 OpExecutionMode %main OriginUpperLeft
 OpDecorate %var1 Location 0
 OpDecorate %var2 Location 1
+OpDecorate %var2 Component 3
 %void = OpTypeVoid
 %void_fn = OpTypeFunction %void
 %float = OpTypeFloat 32
@@ -841,7 +871,34 @@ OpFunctionEnd
               AnyVUID("VUID-StandaloneSpirv-OpEntryPoint-08721"));
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Entry-point has conflicting input location assignment "
-                        "at location 1"));
+                        "at location 1, component 3"));
+}
+
+TEST_F(ValidateInterfacesTest, VulkanLocationsMatrix2x2Good) {
+  const std::string text = R"(
+OpCapability Shader
+OpMemoryModel Logical GLSL450
+OpEntryPoint Fragment %main "main" %var1 %var2
+OpExecutionMode %main OriginUpperLeft
+OpDecorate %var1 Location 0
+OpDecorate %var2 Location 2
+%void = OpTypeVoid
+%void_fn = OpTypeFunction %void
+%float = OpTypeFloat 32
+%vector = OpTypeVector %float 2
+%matrix = OpTypeMatrix %vector 2
+%ptr_input_float = OpTypePointer Input %float
+%ptr_input_matrix = OpTypePointer Input %matrix
+%var1 = OpVariable %ptr_input_matrix Input
+%var2 = OpVariable %ptr_input_float Input
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(text, SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_VULKAN_1_0));
 }
 
 TEST_F(ValidateInterfacesTest, VulkanLocationsMatrix3x3Conflict) {
@@ -852,6 +909,7 @@ OpEntryPoint Fragment %main "main" %var1 %var2
 OpExecutionMode %main OriginUpperLeft
 OpDecorate %var1 Location 0
 OpDecorate %var2 Location 2
+OpDecorate %var2 Component 3
 %void = OpTypeVoid
 %void_fn = OpTypeFunction %void
 %float = OpTypeFloat 32
@@ -873,7 +931,7 @@ OpFunctionEnd
               AnyVUID("VUID-StandaloneSpirv-OpEntryPoint-08721"));
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Entry-point has conflicting input location assignment "
-                        "at location 2"));
+                        "at location 2, component 3"));
 }
 
 TEST_F(ValidateInterfacesTest, VulkanLocationsMatrix4x4Conflict) {
@@ -884,6 +942,7 @@ OpEntryPoint Fragment %main "main" %var1 %var2
 OpExecutionMode %main OriginUpperLeft
 OpDecorate %var1 Location 0
 OpDecorate %var2 Location 3
+OpDecorate %var2 Component 3
 %void = OpTypeVoid
 %void_fn = OpTypeFunction %void
 %float = OpTypeFloat 32
@@ -905,7 +964,7 @@ OpFunctionEnd
               AnyVUID("VUID-StandaloneSpirv-OpEntryPoint-08721"));
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Entry-point has conflicting input location assignment "
-                        "at location 3"));
+                        "at location 3, component 3"));
 }
 
 TEST_F(ValidateInterfacesTest, VulkanLocationsLargeMatrix2x2Conflict) {
@@ -916,7 +975,8 @@ OpMemoryModel Logical GLSL450
 OpEntryPoint Fragment %main "main" %var1 %var2
 OpExecutionMode %main OriginUpperLeft
 OpDecorate %var1 Location 0
-OpDecorate %var2 Location 1
+OpDecorate %var2 Location 3
+OpDecorate %var2 Component 3
 %void = OpTypeVoid
 %void_fn = OpTypeFunction %void
 %float = OpTypeFloat 32
@@ -939,7 +999,36 @@ OpFunctionEnd
               AnyVUID("VUID-StandaloneSpirv-OpEntryPoint-08721"));
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Entry-point has conflicting input location assignment "
-                        "at location 1"));
+                        "at location 3, component 3"));
+}
+
+TEST_F(ValidateInterfacesTest, VulkanLocationsLargeMatrix2x2Good) {
+  const std::string text = R"(
+OpCapability Shader
+OpCapability Float64
+OpMemoryModel Logical GLSL450
+OpEntryPoint Fragment %main "main" %var1 %var2
+OpExecutionMode %main OriginUpperLeft
+OpDecorate %var1 Location 0
+OpDecorate %var2 Location 4
+%void = OpTypeVoid
+%void_fn = OpTypeFunction %void
+%float = OpTypeFloat 32
+%double = OpTypeFloat 64
+%vector = OpTypeVector %double 2
+%matrix = OpTypeMatrix %vector 2
+%ptr_input_float = OpTypePointer Input %float
+%ptr_input_matrix = OpTypePointer Input %matrix
+%var1 = OpVariable %ptr_input_matrix Input
+%var2 = OpVariable %ptr_input_float Input
+%main = OpFunction %void None %void_fn
+%entry = OpLabel
+OpReturn
+OpFunctionEnd
+)";
+
+  CompileSuccessfully(text, SPV_ENV_VULKAN_1_0);
+  EXPECT_EQ(SPV_SUCCESS, ValidateInstructions(SPV_ENV_VULKAN_1_0));
 }
 
 TEST_F(ValidateInterfacesTest, VulkanLocationsLargeMatrix3x3Conflict) {
@@ -951,6 +1040,7 @@ OpEntryPoint Fragment %main "main" %var1 %var2
 OpExecutionMode %main OriginUpperLeft
 OpDecorate %var1 Location 0
 OpDecorate %var2 Location 5
+OpDecorate %var2 Component 3
 %void = OpTypeVoid
 %void_fn = OpTypeFunction %void
 %float = OpTypeFloat 32
@@ -973,7 +1063,7 @@ OpFunctionEnd
               AnyVUID("VUID-StandaloneSpirv-OpEntryPoint-08721"));
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Entry-point has conflicting input location assignment "
-                        "at location 5"));
+                        "at location 5, component 3"));
 }
 
 TEST_F(ValidateInterfacesTest, VulkanLocationsLargeMatrix4x4Conflict) {
@@ -985,6 +1075,7 @@ OpEntryPoint Fragment %main "main" %var1 %var2
 OpExecutionMode %main OriginUpperLeft
 OpDecorate %var1 Location 0
 OpDecorate %var2 Location 7
+OpDecorate %var2 Component 3
 %void = OpTypeVoid
 %void_fn = OpTypeFunction %void
 %float = OpTypeFloat 32
@@ -1007,7 +1098,7 @@ OpFunctionEnd
               AnyVUID("VUID-StandaloneSpirv-OpEntryPoint-08721"));
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Entry-point has conflicting input location assignment "
-                        "at location 7"));
+                        "at location 7, component 3"));
 }
 
 TEST_F(ValidateInterfacesTest, VulkanLocationsArray2Conflict) {

@@ -166,17 +166,24 @@ spv_result_t NumConsumedLocations(ValidationState_t& _, const Instruction* type,
       }
       break;
     case spv::Op::OpTypeMatrix:
-      // Matrices consume locations equal to the underlying vector type for
-      // each column.
-      NumConsumedLocations(_, _.FindDef(type->GetOperandAs<uint32_t>(1)),
-                           num_locations);
+      // Matrices consume locations equal to a 4-element vector of underlying
+      // element type of each column.
+      if ((_.ContainsSizedIntOrFloatType(type->id(), spv::Op::OpTypeInt, 64) ||
+           _.ContainsSizedIntOrFloatType(type->id(), spv::Op::OpTypeFloat,
+                                         64))) {
+        *num_locations = 2;
+      } else {
+        *num_locations = 1;
+      }
       *num_locations *= type->GetOperandAs<uint32_t>(2);
       break;
     case spv::Op::OpTypeArray: {
       // Arrays consume locations equal to the underlying type times the number
       // of elements in the vector.
-      NumConsumedLocations(_, _.FindDef(type->GetOperandAs<uint32_t>(1)),
-                           num_locations);
+      if (auto error = NumConsumedLocations(
+              _, _.FindDef(type->GetOperandAs<uint32_t>(1)), num_locations)) {
+        return error;
+      }
       bool is_int = false;
       bool is_const = false;
       uint32_t value = 0;
@@ -246,6 +253,10 @@ uint32_t NumConsumedComponents(ValidationState_t& _, const Instruction* type) {
           NumConsumedComponents(_, _.FindDef(type->GetOperandAs<uint32_t>(1)));
       num_components *= type->GetOperandAs<uint32_t>(2);
       break;
+    case spv::Op::OpTypeMatrix:
+      // Matrices consume all 4 components (0 is the placeholder for all
+      // components).
+      return 0;
     case spv::Op::OpTypeArray:
       // Skip the array.
       return NumConsumedComponents(_,
